@@ -1,70 +1,98 @@
 [
     {
-        "title": "Emergency medicine",
+        "title": "Emergency Medicine",
         "sections": [
             {
-                "title": "Internal medicine emergency",
+                "title": "Stroke",
                 "sections": [
                     {
-                        "title": "Stroke",
-                        "sections": [
-                            {
-                                "title": "History",
-                                "data": "1. Check **Risk Factors:**\n   - Diabetic or hypertensive (Is there hypertension or diabetes?)\n   - Heavy smoker (Are you currently smoking? Since when? How many cigarettes per day?)\n\n2. Check **Hemiplegia:**\n   - Is there weakness on your right or left side?\n\n3. Check **Aphasia or Dysarthria:**\n   - If any patient complains about suddenly being unable to speak, consider stroke.\n\n4. Check **Headache:**\n   - Inquire about any recent or persistent headaches, and note the severity and duration.\n\n5. Check **Ataxia or Amnesia:**\n   - Inquire about difficulties with coordination or any memory-related issues.\n\n6. Check **Coma, Convulsion, or Confusion:**\n   - Ask if the patient has experienced a state of unconsciousness, seizures, or mental confusion."
-                            },
-                            {
-                                "title": "Examination",
-                                "data": "#### General\n\n1. **Respiratory Rate (RR):**\n   - Count the number of breaths per minute. Tachypnea (abnormally rapid breathing) may be an indication of certain respiratory issues.\n\n2. **Pulse:**\n   - Assess the pulse rate. An abnormal pulse may suggest cardiovascular or other systemic issues.\n\n3. **Blood Pressure:**\n   - Measure blood pressure. Note that caution should be taken not to decrease blood pressure before a CT scan, as it might affect the results.\n\n4. **Temperature:**\n   - Check the patient's body temperature. Elevated temperatures may indicate an infection or other underlying issues.\n\n#### Head Examination\n\n1. **Facial Asymmetry:**\n   - Examine the face for any signs of asymmetry, which may include:\n     - Drop in the angle of the mouth.\n     - Mouth deviated to one side.\n     - Inability to blow out a cheek.![Facial Asymmetry](https://www.iracdubai.com/wp-content/uploads/2022/12/Best-Neuromuscular-Physiotherapist.jpg)"
-                            },
-                            {
-                                "title": "Local Examination",
-                                "data": "#### Chest and Heart\n\n1. **Lung Sounds:**\n   - Use a stethoscope to listen to lung sounds in different areas of the chest. Note any abnormal sounds such as crackles, wheezes, or diminished breath sounds.\n\n2. **Heart Sounds:**\n   - Listen to the heart sounds at different auscultatory areas (e.g., mitral, tricuspid, aortic, pulmonary). Identify and document any abnormalities, such as murmurs, irregular rhythms, or extra heart sounds.\n\n3. **Palpation of the Chest:**\n   - Palpate the chest for tenderness, masses, or deformities.\n\n4. **Palpation of the Heart:**\n   - Palpate the precordium to assess for any tenderness, thrills, or abnormal pulsations.\n\n5. **Chest Expansion:**\n   - Assess chest expansion by placing hands on the chest and observe for symmetrical movement during breathing.\n\n6. **Fremitus:**\n   - Evaluate tactile fremitus by placing hands on the chest and asking the patient to repeat a phrase. Check for symmetry and intensity of vibrations."
-                            },
-                            {
-                                "title": "Neurological Examination (First Stage - 2 to 6 weeks)",
-                                "data": "1. **Glasgow Coma Scale (GCS):**\n   - Assess the patient's level of consciousness using the GCS.\n\n2. **Muscle Tone:**\n   - Note any loss of muscle tone.\n\n3. **Muscle Power:**\n   - Instruct the patient to move their hand and leg. Observe for:\n     - Lack of movement.\n     - Variation in the ability to move one area compared to another.\n\n4. **Deep Reflexes:**\n   - Test deep reflexes (e.g., patellar reflex). Note any loss.\n\n5. **Plantar Reflex:**\n   - Assess the plantar reflex (Babinski sign).\n     - If positive: Big toe moves upward (extension).\n     - If normal: Big toe moves downward or does not move. ![Babinski Sign](https://pbs.twimg.com/media/E9ldNKSWUAIq3Pi.jpg)"
-                            },
-                            {
-                                "title": "Investigations",
-                                "data": "1. **Arterial Blood Gas (ABG):**\n   - Perform ABG if SpO2 (Oxygen Saturation) is less than 94%.\n\n2. **Serum Creatinine:**\n   - Check serum creatinine levels to assess kidney function.\n\n3. **Random Blood Sugar (RBS):**\n   - Perform RBS to exclude hypoglycemia.\n\n4. **CT Scan:**\n   - Consider CT scan, particularly in cases of suspected hemorrhage. CT is useful for providing detailed imaging of the brain.\n     ![CT Scan](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MCA_Territory_Infarct.svg/654px-MCA_Territory_Infarct.svg.png)\n\n5. **MRI (Magnetic Resonance Imaging):**\n   - Consider MRI, especially when a more sensitive imaging modality is required. MRI is valuable for detailed evaluation of soft tissues and is often used for neurological assessments.\n\n6. **ECG (Electrocardiogram):**\n   - Conduct an ECG to assess the heart's electrical activity.\n\n7. **Chest X-ray:**\n   - Perform a chest X-ray to assess the condition of the lungs and surrounding structures."
-                            },
-                            {
-                                "title": "Cases Requiring Urgent CT",
-                                "data": "- Patient with a sudden, severe headache.\n- Patient on anticoagulant therapy or with a bleeding disorder.\n- GCS < 13.\n- Patient with progressive symptoms.\n- Patient with papilledema, fever, and neck stiffness."
-                            }
-                        ]
+                        "title": "History",
+                        "data": "1. Check **Risk Factors:**\n   - Diabetic or hypertensive (Is there hypertension or diabetes?)\n   - Heavy smoker (Are you currently smoking? Since when? How many cigarettes per day?)\n\n2. Check **Hemiplegia:**\n   - Is there weakness on your right or left side?\n\n3. Check **Aphasia or Dysarthria:**\n   - If any patient complains about suddenly being unable to speak, consider stroke.\n\n4. Check **Headache:**\n   - Inquire about any recent or persistent headaches, and note the severity and duration.\n\n5. Check **Ataxia or Amnesia:**\n   - Inquire about difficulties with coordination or any memory-related issues.\n\n6. Check **Coma, Convulsion, or Confusion:**\n   - Ask if the patient has experienced a state of unconsciousness, seizures, or mental confusion."
                     },
                     {
-                        "title": "acute coronary syndrome",
-                        "sections": [
-                            {
-                                "title": "Types",
-                                "data": "1. ST segment elevation MI\r2. Non-ST segment elevation MI\r3. Unstable angina\r"
-                            },
-                            {
-                                "title": "History",
-                                "data": "1. Chest Pain\r   1. Site\r      - Chest pain in early morning\r      - Diffuse retrosternal pain; patient can't say where the pain is when asked to locate it\r      - **Patient will locate it with his fist**\r   2. Radiation\r      - In left shoulder\r      - May be in right shoulder or neck or jaw or back\r      - Rarely in epigastrium\r   3. Character\r      - Patient will describe it as:\r         - Something pushing or burning his chest\r         - Crushing\r         - Compressing\r         - Suffocation\r   4. Duration\r      - Pain lasts more than 20 minutes\r         - If angina patient, he will say the pain increased more than before\r   5. What Increases\r      - Stress\r      - Heavy meal\r      - Sexual intercourse\r      - Can occur without precipitating factors\r   6. What Decreases\r      - Never goes away with nitrate or rest\r   7. Associated Symptoms\r      - Dyspnea and dizziness\r      - Nausea and vomiting\r      - Sweating\r\r2. Risk Factors\r   - Old age\r   - Diabetic\r   - Hypertensive\r   - Heavy smoker (Specify: Since when? How many per day?)\r   - Note: Any patient above 40 with risk factors presenting with dyspeptic pain or chest pain should have acute MI excluded by ECG.\r"
-                            },
-                            {
-                                "title": "Examination",
-                                "data": "1. General\r   1. Count respiratory rate (Note: Look for tachypnea)\r   2. Count pulse (Note: Look for bradycardia or tachycardia)\r   3. Measure blood pressure (Note: Look for hypotension or hypertension)\r   4. Measure temperature (Note: Look for fever)\r   5. Look at skin (Note: Look for pallor or sweating)\r\r2. Local\r   1. Listen to chest and heart\r   2. Check for weak heart sounds\r   3. Assess for murmurs\r   4. Check for fine basal crepitations (may be complicated by acute heart failure)\r"
-                            },
-                            {
-                                "title": "Investigations",
-                                "data": "1. **ECG**\r   - **STEMI (ST-Elevation Myocardial Infarction):**\r     - Significant ST segment elevation:\r       - >1 mm in 2 limb leads or\r       - >2 mm in 2 adjacent chest leads.\r     - Indicates acute myocardial injury, often associated with complete coronary artery blockage.\r\r   - **Non-STEMI (Non-ST-Elevation Myocardial Infarction):**\r     - Absence of significant ST segment elevation.\r     - Associated with changes such as:\r       - Depression of the ST segment or\r       - T-wave inversion.\r     - Myocardial damage may be present but may not be as severe or extensive as in STEMI. Diagnosis involves clinical symptoms, ECG changes, and cardiac biomarker elevation.\r\r - - ![Non-STEMI Image](https://pbs.twimg.com/media/DTH2kxgW4AAO_zV?format=jpg&name=large) \r 2. **Cardiac Enzymes**\r   - **Troponin I and T:**\r     - Elevated after 6 hours.\r     - Highly specific and sensitive markers of myocardial injury.\r\r   - **CK-MB (Creatine Kinase-MB):**\r     - Another cardiac enzyme used as a marker of myocardial damage.\r     - Not as specific as troponin but still valuable in certain clinical situations.\r\r3. **Echocardiography**\r\r4. **Chest X-ray**\r\r**Important Note:**\rTo diagnose acute myocardial infarction (MI), at least two of the following must be present:\r- Typical chest pain\r- ECG changes\r- Elevated cardiac enzymes\r"
-                            },
-                            {
-                                "title": "Treatment",
-                                "data": "### Treatment\r\r- **Prehospital:**\r  - In-clinic or Emergency Department (MONA) then refer\r    - **MONA:**\r      1. **Morphine:**\r         - 5-10 mg IV or Pethidine 50 mg IV\r      2. **Oxygen:**\r         - 100%\r      3. **Nitrate:**\r         - 5 mg SL (Maximum dose 15 mg = 3 tablets)\r      4. **Antiplatelets:**\r         - Aspirin 300 mg and Clopidogrel 300 mg\r      5. **Antiemetic:**\r         - To alleviate nausea\r      6. **Atropine:**\r         - If bradycardia, 1 mg IV\r\r- **Hospital:**\r  - **CCU Admission:**\r    - Continuous monitoring and specialized care for critical cardiac patients.\r"
-                            },
-                            {
-                                "title": "Emergency Department Management",
-                                "data": "1. **When to Start Treatment:**\r   - If risk factors (e.g., history of heart disease, diabetes, hypertension) or typical chest pain are identified before doing a referral, start treatment immediately.\r   - If the patient presents with typical chest pain and the initial ECG is normal:\r      - Perform a repeat ECG after 15 minutes.\r      - Compare the two ECGs to assess for any dynamic changes.\r      - If significant changes are observed in the second ECG, consider the initiation of appropriate treatment.\r\r2. **Access Secure Cannula:**\r   - Establish secure intravenous (IV) access for medication administration and fluid resuscitation.\r\r3. **Take Full Lab:**\r   - ABG\r   - CBC\r   - Serum creatinine\r   - Blood glucose\r\r4. **Patient Monitoring:**\r   - Place the patient under continuous monitoring for vital signs and cardiac activity.\r   - Administer 100% oxygen via a mask to maintain oxygen saturation above 94-98%.\r\r5. **Opioid Analgesic:**\r   - Administer Pethidine or Nalfuin amp.\r   - Give intramuscularly (IM) or dissolve it in 10 cm of saline and administer every 5 cm every 5 minutes IV very slowly.\r\r6. **Nitrate Oral:**\r   - Administer Dinitrate 5 mg tablet under the tongue.\r   - **Important Point:**\r     - Before administration, check blood pressure (BP) as it may cause hypotension (SBP must be above 90 mmHg).\r     - Inquire if the patient has taken sildenafil in the last 48 hours.\r     - If no improvement, administer another tablet after 5 minutes.\r     - Repeat if necessary, with a maximum dose of 3 tablets.\r\r7. **Antiplatelets:**\r   - Administer Aspirin 300 mg (4 tables Aspocid - chew and swallow).\r   - Administer Clopidogrel 300 mg (4 tables Plavix - swallow).\r\r8. **Antiemetic:**\r   - Administer Primeran amp IM or IV slowly. 9. **Consult Cardiologist or Arrange Referral:**\r   - Seek consultation from a cardiologist or arrange for the patient's referral to the nearest hospital for further cardiac evaluation and intervention."
-                            }
-                        ]
+                        "title": "Examination",
+                        "data": "#### General\n\n1. **Respiratory Rate (RR):**\n   - Count the number of breaths per minute. Tachypnea (abnormally rapid breathing) may be an indication of certain respiratory issues.\n\n2. **Pulse:**\n   - Assess the pulse rate. An abnormal pulse may suggest cardiovascular or other systemic issues.\n\n3. **Blood Pressure:**\n   - Measure blood pressure. Note that caution should be taken not to decrease blood pressure before a CT scan, as it might affect the results.\n\n4. **Temperature:**\n   - Check the patient's body temperature. Elevated temperatures may indicate an infection or other underlying issues.\n\n#### Head Examination\n\n1. **Facial Asymmetry:**\n   - Examine the face for any signs of asymmetry, which may include:\n     - Drop in the angle of the mouth.\n     - Mouth deviated to one side.\n     - Inability to blow out a cheek.![Facial Asymmetry](https://www.iracdubai.com/wp-content/uploads/2022/12/Best-Neuromuscular-Physiotherapist.jpg)"
+                    },
+                    {
+                        "title": "Local Examination",
+                        "data": "#### Chest and Heart\n\n1. **Lung Sounds:**\n   - Use a stethoscope to listen to lung sounds in different areas of the chest. Note any abnormal sounds such as crackles, wheezes, or diminished breath sounds.\n\n2. **Heart Sounds:**\n   - Listen to the heart sounds at different auscultatory areas (e.g., mitral, tricuspid, aortic, pulmonary). Identify and document any abnormalities, such as murmurs, irregular rhythms, or extra heart sounds.\n\n3. **Palpation of the Chest:**\n   - Palpate the chest for tenderness, masses, or deformities.\n\n4. **Palpation of the Heart:**\n   - Palpate the precordium to assess for any tenderness, thrills, or abnormal pulsations.\n\n5. **Chest Expansion:**\n   - Assess chest expansion by placing hands on the chest and observe for symmetrical movement during breathing.\n\n6. **Fremitus:**\n   - Evaluate tactile fremitus by placing hands on the chest and asking the patient to repeat a phrase. Check for symmetry and intensity of vibrations."
+                    },
+                    {
+                        "title": "Neurological Examination (First Stage - 2 to 6 weeks)",
+                        "data": "1. **Glasgow Coma Scale (GCS):**\n   - Assess the patient's level of consciousness using the GCS.\n\n2. **Muscle Tone:**\n   - Note any loss of muscle tone.\n\n3. **Muscle Power:**\n   - Instruct the patient to move their hand and leg. Observe for:\n     - Lack of movement.\n     - Variation in the ability to move one area compared to another.\n\n4. **Deep Reflexes:**\n   - Test deep reflexes (e.g., patellar reflex). Note any loss.\n\n5. **Plantar Reflex:**\n   - Assess the plantar reflex (Babinski sign).\n     - If positive: Big toe moves upward (extension).\n     - If normal: Big toe moves downward or does not move. ![Babinski Sign](https://pbs.twimg.com/media/E9ldNKSWUAIq3Pi.jpg)"
+                    },
+                    {
+                        "title": "Investigations",
+                        "data": "1. **Arterial Blood Gas (ABG):**\n   - Perform ABG if SpO2 (Oxygen Saturation) is less than 94%.\n\n2. **Serum Creatinine:**\n   - Check serum creatinine levels to assess kidney function.\n\n3. **Random Blood Sugar (RBS):**\n   - Perform RBS to exclude hypoglycemia.\n\n4. **CT Scan:**\n   - Consider CT scan, particularly in cases of suspected hemorrhage. CT is useful for providing detailed imaging of the brain.\n     ![CT Scan](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MCA_Territory_Infarct.svg/654px-MCA_Territory_Infarct.svg.png)\n\n5. **MRI (Magnetic Resonance Imaging):**\n   - Consider MRI, especially when a more sensitive imaging modality is required. MRI is valuable for detailed evaluation of soft tissues and is often used for neurological assessments.\n\n6. **ECG (Electrocardiogram):**\n   - Conduct an ECG to assess the heart's electrical activity.\n\n7. **Chest X-ray:**\n   - Perform a chest X-ray to assess the condition of the lungs and surrounding structures."
+                    },
+                    {
+                        "title": "Cases Requiring Urgent CT",
+                        "data": "- Patient with a sudden, severe headache.\n- Patient on anticoagulant therapy or with a bleeding disorder.\n- GCS < 13.\n- Patient with progressive symptoms.\n- Patient with papilledema, fever, and neck stiffness."
+                    }
+                ]
+            },
+            {
+                "title": "acute coronary syndrome",
+                "sections": [
+                    {
+                        "title": "Types",
+                        "data": "1. ST segment elevation MI\r2. Non-ST segment elevation MI\r3. Unstable angina\r"
+                    },
+                    {
+                        "title": "History",
+                        "data": "1. Chest Pain\r   1. Site\r      - Chest pain in early morning\r      - Diffuse retrosternal pain; patient can't say where the pain is when asked to locate it\r      - **Patient will locate it with his fist**\r   2. Radiation\r      - In left shoulder\r      - May be in right shoulder or neck or jaw or back\r      - Rarely in epigastrium\r   3. Character\r      - Patient will describe it as:\r         - Something pushing or burning his chest\r         - Crushing\r         - Compressing\r         - Suffocation\r   4. Duration\r      - Pain lasts more than 20 minutes\r         - If angina patient, he will say the pain increased more than before\r   5. What Increases\r      - Stress\r      - Heavy meal\r      - Sexual intercourse\r      - Can occur without precipitating factors\r   6. What Decreases\r      - Never goes away with nitrate or rest\r   7. Associated Symptoms\r      - Dyspnea and dizziness\r      - Nausea and vomiting\r      - Sweating\r\r2. Risk Factors\r   - Old age\r   - Diabetic\r   - Hypertensive\r   - Heavy smoker (Specify: Since when? How many per day?)\r   - Note: Any patient above 40 with risk factors presenting with dyspeptic pain or chest pain should have acute MI excluded by ECG.\r"
+                    },
+                    {
+                        "title": "Examination",
+                        "data": "1. General\r   1. Count respiratory rate (Note: Look for tachypnea)\r   2. Count pulse (Note: Look for bradycardia or tachycardia)\r   3. Measure blood pressure (Note: Look for hypotension or hypertension)\r   4. Measure temperature (Note: Look for fever)\r   5. Look at skin (Note: Look for pallor or sweating)\r\r2. Local\r   1. Listen to chest and heart\r   2. Check for weak heart sounds\r   3. Assess for murmurs\r   4. Check for fine basal crepitations (may be complicated by acute heart failure)\r"
+                    },
+                    {
+                        "title": "Investigations",
+                        "data": "1. **ECG**\r   - **STEMI (ST-Elevation Myocardial Infarction):**\r     - Significant ST segment elevation:\r       - >1 mm in 2 limb leads or\r       - >2 mm in 2 adjacent chest leads.\r     - Indicates acute myocardial injury, often associated with complete coronary artery blockage.\r\r   - **Non-STEMI (Non-ST-Elevation Myocardial Infarction):**\r     - Absence of significant ST segment elevation.\r     - Associated with changes such as:\r       - Depression of the ST segment or\r       - T-wave inversion.\r     - Myocardial damage may be present but may not be as severe or extensive as in STEMI. Diagnosis involves clinical symptoms, ECG changes, and cardiac biomarker elevation.\r\r - - ![Non-STEMI Image](https://pbs.twimg.com/media/DTH2kxgW4AAO_zV?format=jpg&name=large) \r 2. **Cardiac Enzymes**\r   - **Troponin I and T:**\r     - Elevated after 6 hours.\r     - Highly specific and sensitive markers of myocardial injury.\r\r   - **CK-MB (Creatine Kinase-MB):**\r     - Another cardiac enzyme used as a marker of myocardial damage.\r     - Not as specific as troponin but still valuable in certain clinical situations.\r\r3. **Echocardiography**\r\r4. **Chest X-ray**\r\r**Important Note:**\rTo diagnose acute myocardial infarction (MI), at least two of the following must be present:\r- Typical chest pain\r- ECG changes\r- Elevated cardiac enzymes\r"
+                    },
+                    {
+                        "title": "Treatment",
+                        "data": "### Treatment\r\r- **Prehospital:**\r  - In-clinic or Emergency Department (MONA) then refer\r    - **MONA:**\r      1. **Morphine:**\r         - 5-10 mg IV or Pethidine 50 mg IV\r      2. **Oxygen:**\r         - 100%\r      3. **Nitrate:**\r         - 5 mg SL (Maximum dose 15 mg = 3 tablets)\r      4. **Antiplatelets:**\r         - Aspirin 300 mg and Clopidogrel 300 mg\r      5. **Antiemetic:**\r         - To alleviate nausea\r      6. **Atropine:**\r         - If bradycardia, 1 mg IV\r\r- **Hospital:**\r  - **CCU Admission:**\r    - Continuous monitoring and specialized care for critical cardiac patients.\r"
+                    },
+                    {
+                        "title": "Emergency Department Management",
+                        "data": "1. **When to Start Treatment:**\r   - If risk factors (e.g., history of heart disease, diabetes, hypertension) or typical chest pain are identified before doing a referral, start treatment immediately.\r   - If the patient presents with typical chest pain and the initial ECG is normal:\r      - Perform a repeat ECG after 15 minutes.\r      - Compare the two ECGs to assess for any dynamic changes.\r      - If significant changes are observed in the second ECG, consider the initiation of appropriate treatment.\r\r2. **Access Secure Cannula:**\r   - Establish secure intravenous (IV) access for medication administration and fluid resuscitation.\r\r3. **Take Full Lab:**\r   - ABG\r   - CBC\r   - Serum creatinine\r   - Blood glucose\r\r4. **Patient Monitoring:**\r   - Place the patient under continuous monitoring for vital signs and cardiac activity.\r   - Administer 100% oxygen via a mask to maintain oxygen saturation above 94-98%.\r\r5. **Opioid Analgesic:**\r   - Administer Pethidine or Nalfuin amp.\r   - Give intramuscularly (IM) or dissolve it in 10 cm of saline and administer every 5 cm every 5 minutes IV very slowly.\r\r6. **Nitrate Oral:**\r   - Administer Dinitrate 5 mg tablet under the tongue.\r   - **Important Point:**\r     - Before administration, check blood pressure (BP) as it may cause hypotension (SBP must be above 90 mmHg).\r     - Inquire if the patient has taken sildenafil in the last 48 hours.\r     - If no improvement, administer another tablet after 5 minutes.\r     - Repeat if necessary, with a maximum dose of 3 tablets.\r\r7. **Antiplatelets:**\r   - Administer Aspirin 300 mg (4 tables Aspocid - chew and swallow).\r   - Administer Clopidogrel 300 mg (4 tables Plavix - swallow).\r\r8. **Antiemetic:**\r   - Administer Primeran amp IM or IV slowly. 9. **Consult Cardiologist or Arrange Referral:**\r   - Seek consultation from a cardiologist or arrange for the patient's referral to the nearest hospital for further cardiac evaluation and intervention."
+                    }
+                ]
+            },
+            {
+                "title": "Acute Pulmonary Edema",
+                "sections": [
+                    {
+                        "title": "History",
+                        "data": "1. Ask about causes:\r   - MI (burning in your chest or compression)\r   - RF (kidney problems)\r   - HF (heart muscle problems or medication use)\r   - HTN (hypertension)\r   - Stroke (weakness in hand or leg)\r\r2. Symptoms of pulmonary edema:\r   - Severe dyspnea (difficulty in breathing)\r      - At rest (when sitting)\r      - Orthopnea (difficulty breathing when sleeping on the back) \r   - Cyanosis (blue face)\r   - Cough:\r      - Presence of cough\r      - Color of cough: Frothy blood-tinged sputum\r"
+                    },
+                    {
+                        "title": "Examination",
+                        "data": "1. General Examination:\r   - Look at the face:\r      - Sweaty appearance\r      - Signs of irritability\r   - Count respiratory rate:\r      - Tachypnea (>25 breaths per minute)\r   - Count pulse:\r      - Bradycardia or tachycardia\r   - Check blood pressure:\r      - May be hypotensive or hypertensive\r   - Measure temperature\r   - Look at the face:\r      - Central cyanosis\r   - Examine skin:\r      - Sweaty, pale, and cool\r\r2. Local Examination:\r   - Listen to the heart and chest:\r      - Murmur or gallop rhythm\r      - Generalized or basal bubbling crepitation\r      - Generalized wheezes and murmur\r"
+                    },
+                    {
+                        "title": "Investigation",
+                        "data": "- Start Treatment Before Completing Investigations:\r\r  For Pulmonary Edema (PE):\r  1. Chest X-ray\r     ![Chest X-ray](https://prod-images-static.radiopaedia.org/images/1564322/e0fdf80eb6c7565a88b3650cfde94d_gallery.jpg)\r  2. Arterial Blood Gas (ABG) and Blood Glucose\r\r  For Causes:\r  1. Coronary Angiography (CEG) and Cardiac Enzymes for Myocardial Infarction (MI)\r  2. CT Scan for Stroke\r  3. Serum Creatinine\r"
+                    },
+                    {
+                        "title": "Treament",
+                        "data": "- Urgent Treatment Within First Few Minutes, then ICU Admission:\r\r> **Note:**\r> Be careful when examining the patient or performing an ECG. If the patient is made to sleep on their back, there is a risk of drowning in their secretions.\r"
+                    },
+                    {
+                        "title": "In the Emergency Department",
+                        "data": "1. Place the patient on a bed or trolley and support their back by placing something underneath.\r2. Administer high-flow oxygen through a face mask.\r3. Establish IV Access:\r   - Access IV with a cannula.\r4. Nebulized Salbutamol Session:\r   - Administer Farcolin: Nebulized salbutamol session (1 cm Farcolin + 2 cm saline) every 15-30 minutes.\r5. Insert a Catheter.\r6. Seek Help:\r   - Ask for assistance from a cardiologist or refer the patient to the nearest hospital.\r7. Administer Medications:\r   - Diuretic:\r     - Furosemide (Frusemide) 40-80 mg IV\r       or\r     - Lasix 40 mg amp, 1-2 amp IV slowly.\r   - Nitrate:\r     - Nitroglycerin 5 mg under the tongue if systolic blood pressure > 90.\r   - Antiemetic:\r     - Administer antiemetic or Primperan amp IM or IV slowly in case of vomiting.\r   - Chest Pain Management:\r     - Venodilator (Opioid Narcotic):\r       1. Pethidine or Nalufin amp\r       2. Administer IM or dissolve in 10 cm saline and give 5 cm every 5 minutes slowly.\r\r> **Note for Pethidine:**\r> Do not administer medications if the patient is drowsy or confused.\r"
                     }
                 ]
             }
         ]
+    },
+    {
+        "title": "Emergency Surgery",
+        "sections": []
+    },
+    {
+        "title": "Emergency Pediatrics",
+        "sections": []
     }
 ]

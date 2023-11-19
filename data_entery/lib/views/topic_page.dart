@@ -1,11 +1,14 @@
 import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:data_entery/views/custom_scaffold_page.dart';
 import 'package:data_entery/widgets/expanded_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/model.dart';
+import 'notes_page_view.dart';
+import 'topics_view.dart';
 
 class TopicPage extends StatefulWidget {
   const TopicPage({super.key, required this.content, this.index = 0});
@@ -19,16 +22,29 @@ class TopicPage extends StatefulWidget {
 class _TopicPageState extends State<TopicPage> {
   late ScrollController _scrollController;
   late List<GlobalKey> keys;
+  bool _showFab = false;
   @override
   void initState() {
     super.initState();
-    keys =
-        List.generate(widget.content.sections.length, (index) => GlobalKey());
+    // keys =
+    //     List.generate(widget.content.sections.length, (index) => GlobalKey());
     _scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo((widget.index.toDouble() + 1) * 400);
-      log("${widget.index}from topic page");
-      scrollTo50(widget.index);
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   _scrollController.jumpTo((widget.index.toDouble() + 1) * 400);
+    //   log("${widget.index}from topic page");
+    //   scrollTo50(widget.index);
+    // });
+    _scrollController.addListener(() {
+      if (_scrollController.offset >=
+          _scrollController.position.maxScrollExtent / 10) {
+        setState(() {
+          _showFab = true;
+        });
+      } else {
+        setState(() {
+          _showFab = false;
+        });
+      }
     });
   }
 
@@ -49,88 +65,94 @@ class _TopicPageState extends State<TopicPage> {
     });
   }
 
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // return CustomScaffold<MedicalContent>(
-    //   scrollController: _scrollController,
-    //   data: widget.content,
-    //   children: List.generate(
-    //     widget.content.sections.length,
-    //     (index) {
-    //       final sections = widget.content.sections[index];
-    //       return tile(sections);
-    //     },
-    //   ),
-    // );
     return Scaffold(
-      body: ListView.builder(
-        controller: _scrollController,
-        itemCount: widget.content.sections.length,
-        itemBuilder: (context, index) {
-          final medicalSection = widget.content.sections[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onLongPress: () {
-                // log('i');
+      floatingActionButton: _showFab
+          ? FloatingActionButton.small(
+              onPressed: _scrollToTop,
+              child: const Icon(
+                Icons.arrow_upward,
+                size: 15,
+              ),
+            )
+          : FloatingActionButton.small(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  customPageRoute(NotesPageView(
+                    title: widget.toString().title(),
+                    id: widget.toString().title(),
+                  )),
+                );
               },
-              child: ExpansionTile(
-                key: keys[index],
-                initiallyExpanded: true,
-                tilePadding: const EdgeInsets.all(0),
-                leading: VerticalDivider(
-                  thickness: 5.5,
-                  color: Colors.blue.shade300,
-                ),
-                maintainState: true,
-                backgroundColor: Colors.transparent,
-                collapsedBackgroundColor: Colors.transparent,
-                iconColor: Colors.blue.shade300,
-                collapsedIconColor: Colors.blue.shade400,
-                textColor: Colors.black,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(0),
-                  ),
-                ),
-                collapsedShape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(0),
-                  ),
-                ),
-                expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                expandedAlignment: Alignment.centerLeft,
-                childrenPadding: const EdgeInsets.all(10),
-                title: Text(medicalSection.title),
-                children: [
-                  MarkdownBody(
-                    selectable: true,
-                    styleSheet: MarkdownStyleSheet(
-                      h3: GoogleFonts.roboto(),
-                      h2: GoogleFonts.roboto(),
-                      h1: GoogleFonts.roboto(),
-                      p: GoogleFonts.roboto(),
-                    ),
-                    data: medicalSection.data,
-                    imageBuilder: (uri, title, alt) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: 300,
-                          height: 300,
-                          child: CachedNetworkImage(
-                            imageUrl: uri.toString(),
-                            filterQuality: FilterQuality.medium,
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                ],
+              child: const Icon(
+                Icons.create,
+                size: 15,
               ),
             ),
-          );
-        },
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          SliverAppBar(
+            title: Text(
+              widget.content.title,
+              style: const TextStyle(
+                color: Colors.black87,
+              ),
+            ),
+            pinned: true,
+            bottom: PreferredSize(
+              preferredSize: const Size(400, 0),
+              child: LinearProgressIndicator(
+                value: _scrollController.hasClients
+                    ? _scrollController.offset /
+                        _scrollController.position.maxScrollExtent
+                    : 0.0,
+                backgroundColor: Colors.grey[200],
+                valueColor:
+                    const AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
+              ),
+            ),
+          ),
+          SliverList.builder(
+              itemCount: widget.content.sections.length,
+              itemBuilder: (context, index) {
+                final medicalSection = widget.content.sections[index];
+                return Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        height: 40,
+                        alignment: Alignment.centerLeft,
+                        color: Colors.indigo,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          medicalSection.title.title(),
+                          style: GoogleFonts.roboto(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: MarkdownB(medicalSection: medicalSection),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        ],
       ),
     );
   }

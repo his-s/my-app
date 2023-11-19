@@ -45,33 +45,45 @@ class ExpandedTile extends StatelessWidget {
           expandedAlignment: Alignment.centerLeft,
           childrenPadding: const EdgeInsets.all(10),
           title: Text(medicalSection.title),
-          children: [
-            MarkdownBody(
-              selectable: true,
-              styleSheet: MarkdownStyleSheet(
-                h3: GoogleFonts.roboto(),
-                h2: GoogleFonts.roboto(),
-                h1: GoogleFonts.roboto(),
-                p: GoogleFonts.roboto(),
-              ),
-              data: medicalSection.data,
-              imageBuilder: (uri, title, alt) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    width: 300,
-                    height: 300,
-                    child: CachedNetworkImage(
-                      imageUrl: uri.toString(),
-                      filterQuality: FilterQuality.medium,
-                    ),
-                  ),
-                );
-              },
-            )
-          ],
+          children: [MarkdownB(medicalSection: medicalSection)],
         ),
       ),
+    );
+  }
+}
+
+class MarkdownB extends StatelessWidget {
+  const MarkdownB({
+    super.key,
+    required this.medicalSection,
+  });
+
+  final MedicalSection medicalSection;
+
+  @override
+  Widget build(BuildContext context) {
+    return MarkdownBody(
+      selectable: true,
+      styleSheet: MarkdownStyleSheet(
+        h3: GoogleFonts.roboto(),
+        h2: GoogleFonts.roboto(),
+        h1: GoogleFonts.roboto(),
+        p: GoogleFonts.roboto(),
+      ),
+      data: medicalSection.data,
+      imageBuilder: (uri, title, alt) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 300,
+            height: 300,
+            child: CachedNetworkImage(
+              imageUrl: uri.toString(),
+              filterQuality: FilterQuality.medium,
+            ),
+          ),
+        );
+      },
     );
   }
 }

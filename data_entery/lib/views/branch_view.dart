@@ -39,15 +39,15 @@ class BranchsView extends StatelessWidget {
                 color: Colors.black54,
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  customPageRoute(
-                    TopicsView(
-                      title: branchtitle,
-                      sections: branchSections,
-                    ),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   customPageRoute(
+                //   //   // TopicsView(
+                //   //   //   title: branchtitle,
+                //   //   //   sections: branchSections,
+                //   //   // ),
+                //   // ),
+                // );
               },
             );
           }),

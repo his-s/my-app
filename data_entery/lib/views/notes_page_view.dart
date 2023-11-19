@@ -110,8 +110,8 @@ class _NotesPageViewState extends State<NotesPageView> {
             return IconButton(
               icon: const Icon(Icons.save_alt),
               onPressed: () {
-                final data = medicals.map((e) => e.toJson()).toList();
-                log(data.toString());
+                // final data = medicals.map((e) => e.toJson()).toList();
+                // log(data.toString());
               },
             );
           }),

@@ -5,6 +5,8 @@ import 'package:data_entery/views/preview_page.dart';
 import 'package:data_entery/views/topics_view.dart';
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 extension Title on String {
   String title() {
     return substring(0, 1).toUpperCase() +
@@ -20,11 +22,13 @@ class CustomScaffold<T> extends StatefulWidget {
     required this.data,
     required this.children,
     required this.scrollController,
+    required this.sliverList,
   });
 
   final T data;
   final List<Widget> children;
   final ScrollController scrollController;
+  final SliverList sliverList;
   @override
   State<CustomScaffold> createState() => _CustomScaffoldState();
 }
@@ -35,19 +39,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   void initState() {
     super.initState();
-
-    widget.scrollController.addListener(() {
-      if (widget.scrollController.offset >=
-          widget.scrollController.position.maxScrollExtent / 10) {
-        setState(() {
-          _showFab = true;
-        });
-      } else {
-        setState(() {
-          _showFab = false;
-        });
-      }
-    });
   }
 
   void _scrollToTop() {
@@ -89,57 +80,52 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 size: 15,
               ),
             ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          // int visibleItemIndex =
-          //     (_scrollController.offset / 50).round(); // Adjust as needed
-          // String title =
-          //     visibleItemIndex < titles.length ? titles[visibleItemIndex] : '';
-          return [
-            SliverAppBar(
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context, customPageRoute(const MyApp()));
-                  },
-                  icon: const Icon(Icons.home),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-              ],
-              leading: IconButton(
-                icon:
-                    const Icon(Icons.chevron_left), // Use the chevron left icon
-                onPressed: () {
-                  Navigator.of(context).pop(); // Add your pop logic here
-                },
-              ),
-              backgroundColor: Colors.indigoAccent,
-              foregroundColor: Colors.white,
-              floating: true,
-              pinned: true,
-              title: Text(widget.data.title.toString().title()),
+      body: CustomScrollView(slivers: [
+        // int visibleItemIndex =
+        //     (_scrollController.offset / 50).round(); // Adjust as needed
+        // String title =
+        //     visibleItemIndex < titles.length ? titles[visibleItemIndex] : '';
+
+        SliverAppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context, customPageRoute(const MyApp()));
+              },
+              icon: const Icon(Icons.home),
             ),
-            SliverToBoxAdapter(
-              child: LinearProgressIndicator(
-                value: widget.scrollController.hasClients
-                    ? widget.scrollController.offset /
-                        widget.scrollController.position.maxScrollExtent
-                    : 0.0,
-                backgroundColor: Colors.grey[200],
-                valueColor:
-                    const AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
-              ),
+            const SizedBox(
+              width: 10,
             ),
-          ];
-        },
-        body: ListView(
-          controller: widget.scrollController,
-          children: widget.children,
+          ],
+          leading: IconButton(
+            icon: const Icon(Icons.chevron_left), // Use the chevron left icon
+            onPressed: () {
+              Navigator.of(context).pop(); // Add your pop logic here
+            },
+          ),
+          floating: true,
+          pinned: true,
+          title: Text(widget.data.title.toString().title()),
         ),
-      ),
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: MySliverPersistentHeaderDelegate(
+            LinearProgressIndicator(
+              value: widget.scrollController.hasClients
+                  ? widget.scrollController.offset /
+                      widget.scrollController.position.maxScrollExtent
+                  : 0.0,
+              backgroundColor: Colors.grey[200],
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
+            ),
+          ),
+        ),
+
+        widget.sliverList,
+      ]),
     );
   }
 }

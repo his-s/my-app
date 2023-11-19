@@ -30,12 +30,10 @@ class AppData extends ChangeNotifier {
   loadTopics() {
     medicals.forEach((element) {
       element.sections.forEach((i) {
-        i.sections.forEach((e) {
-          contents.add(e);
-        });
+        contents.add(i);
       });
     });
-    contents.sort((a, b) => b.title.compareTo(a.title));
+
     searched = contents;
     notifyListeners();
   }

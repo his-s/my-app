@@ -6,7 +6,7 @@ import 'model.dart';
 
 class Medical {
   String title;
-  List<MedicalBranch> sections;
+  List<MedicalContent> sections;
   Medical({
     required this.title,
     required this.sections,
@@ -14,7 +14,7 @@ class Medical {
 
   Medical copyWith({
     String? title,
-    List<MedicalBranch>? sections,
+    List<MedicalContent>? sections,
   }) {
     return Medical(
       title: title ?? this.title,
@@ -32,9 +32,9 @@ class Medical {
   factory Medical.fromMap(Map<String, dynamic> map) {
     return Medical(
       title: map['title'] as String,
-      sections: List<MedicalBranch>.from(
-        (map['sections'] as List<dynamic>).map<MedicalBranch>(
-          (x) => MedicalBranch.fromMap(x as Map<String, dynamic>),
+      sections: List<MedicalContent>.from(
+        (map['sections'] as List<dynamic>).map<MedicalContent>(
+          (x) => MedicalContent.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );
