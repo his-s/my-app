@@ -12,6 +12,7 @@ const cPed = "assets/images/pediatric.png";
 const cObs = "assets/images/obstetrics.png";
 const cMed = "assets/images/vaccination.png";
 const drugs = "assets/images/medicine.png";
+const seach = "assets/images/flash-sale.png";
 
 List<String> chaptersImg = [
   eMed,

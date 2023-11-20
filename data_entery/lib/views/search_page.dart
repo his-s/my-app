@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:data_entery/core/constants/app_images.dart';
 import 'package:data_entery/data/data_state_notifier.dart';
 import 'package:data_entery/views/custom_scaffold_page.dart';
 import 'package:data_entery/views/preview_page.dart';
@@ -22,25 +23,6 @@ class SearchPage extends ConsumerStatefulWidget {
 
 class _SearchPageState extends ConsumerState<SearchPage> {
   final TextEditingController _searchController = TextEditingController();
-  // List<String> allItems = [
-  //   'Apple',
-  //   'Banana',
-  //   'Orange',
-  //   'Mango',
-  //   'Grapes',
-  //   'Watermelon',
-  //   'Pineapple',
-  // ];
-  // List<MedicalContent> contents = [];
-  // search() {
-  //   for (var element in medicals) {
-  //     for (var i in element.sections) {
-  //       for (var e in i.sections) {
-  //         contents.add(e);
-  //       }
-  //     }
-  //   }
-  // }
 
   @override
   void initState() {
@@ -66,13 +48,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     final appData = ref.watch(appDataProvider);
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(
-        //   icon: const Icon(Icons.chevron_left), // Use the chevron left icon
-        //   onPressed: () {
-        //     Navigator.of(context).pop(); // Add your pop logic here
-        //   },
-        // ),
-
         title: const Text(
           'Search',
           style: TextStyle(
@@ -111,7 +86,10 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    leading: const Icon(Ionicons.flash_outline),
+                    leading: Image.asset(
+                      seach,
+                      scale: 15,
+                    ),
                     tileColor: Colors.grey.shade200,
                     title: Text(appData.searched[index].title.title()),
                     subtitle: SingleChildScrollView(

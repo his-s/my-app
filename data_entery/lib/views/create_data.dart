@@ -16,10 +16,26 @@ class CreateDataPage extends StatefulWidget {
 }
 
 class _CreateDataPageState extends State<CreateDataPage> {
-  TextEditingController topicController = TextEditingController();
-  TextEditingController sectionTitleController = TextEditingController();
-  TextEditingController sectionDataController = TextEditingController();
+  late final TextEditingController topicController;
+  late final TextEditingController sectionTitleController;
+  late final TextEditingController sectionDataController;
   List<MedicalSection> sections = [];
+  @override
+  void initState() {
+    super.initState();
+    topicController = TextEditingController();
+    sectionDataController = TextEditingController();
+    sectionTitleController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    topicController.dispose();
+    sectionDataController.dispose();
+    sectionDataController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

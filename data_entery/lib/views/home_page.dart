@@ -10,9 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
-
 import '../core/constants/app_images.dart';
-import 'branch_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -25,24 +23,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late ScrollController _scrollController;
-  bool isStartScroll = false;
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      _onScroll();
-    });
   }
 
-  void _onScroll() {
-    if (_scrollController.position.pixels == 0) {
-      // The scroll has just started
-      setState(() {
-        isStartScroll = true;
-      });
-      print('Scroll started');
-    }
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -54,47 +44,6 @@ class _HomePageState extends State<HomePage> {
         },
         child: const Icon(Icons.create),
       ),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.indigoAccent,
-      //   foregroundColor: Colors.white,
-      //   title: const Text('QuickToBe'),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         navigate(const SearchPage(), context);
-      //       },
-      //       icon: const Icon(Icons.search),
-      //     )
-      //   ],
-      // ),
-
-      // body: Consumer(builder: (context, ref, child) {
-      //   final appData = ref.watch(appDataProvider);
-
-      //   return Column(
-      //     children: [
-      //       Expanded(
-      //         child: ListView.builder(
-      //           itemCount: appData.medicals.length,
-      //           itemBuilder: (context, index) {
-      //             final title = appData.medicals[index].title;
-      //             final sections = appData.medicals[index].sections;
-      //             return ListTile(
-      //               leading: const Icon(Icons.lock_open),
-      //               title: Text(title),
-      //               onTap: () {
-      //                 navigate(
-      //                   BranchsView(title: title, sections: sections),
-      //                   context,
-      //                 );
-      //               },
-      //             );
-      //           },
-      //         ),
-      //       )
-      //     ],
-      //   );
-      // }),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../models/model.dart';
-import 'topics_view.dart';
 
 class BranchsView extends StatelessWidget {
   const BranchsView({
@@ -38,17 +36,7 @@ class BranchsView extends StatelessWidget {
                 Icons.vaccines,
                 color: Colors.black54,
               ),
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   customPageRoute(
-                //   //   // TopicsView(
-                //   //   //   title: branchtitle,
-                //   //   //   sections: branchSections,
-                //   //   // ),
-                //   // ),
-                // );
-              },
+              onTap: () {},
             );
           }),
     );

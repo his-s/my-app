@@ -2,7 +2,6 @@ import 'package:data_entery/data/data_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NotesPageView extends StatefulWidget {
   const NotesPageView({super.key, required this.id, required this.title});
@@ -14,7 +13,19 @@ class NotesPageView extends StatefulWidget {
 }
 
 class _NotesPageViewState extends State<NotesPageView> {
-  final _textEditingController = TextEditingController();
+  late final TextEditingController _textEditingController;
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
