@@ -91,6 +91,47 @@
                     {
                         "title": "History",
                         "data": "1. **Respiratory Symptoms**\r   - Acute dyspnea (Is there chest tightness, and since when?)\r   - Cough\r   - Hemoptysis\r   - Cyanosis\r\r2. **Sudden Stitching Chest Pain**\r   - Is there pain in the chest that increases with breathing or coughing?\r\r3. **Fever or Jaundice**\r   - Do you have a fever?\r   - Is your eye yellow?\r\r4. **Causes**\r   - DVT (Have you experienced any embolism before in your leg, or was it inflamed before with pain?)\r   - Surgery (Did you undergo any surgeries within the past 4 weeks?)\r   - Bedridden (Have you been in bed for more than 3 days?)\r   - Trauma (Have you experienced any hits or been in an accident?)\r   - Malignancy (Do you have another disease or are you taking medication?)\r"
+                    },
+                    {
+                        "title": "Examination",
+                        "data": "- General\r  1. Count respiratory rate; you will find tachypnea\r  2. Count pulse; you will find tachycardia\r  3. Check blood pressure; you will find hypotension (indicative of massive pulmonary embolism)\r  4. Measure temperature; you will find fever\r  5. Look at legs; you may find edema and tenderness\r\r- Local\r  - Listen to chest and heart; you may find pleural rub\r"
+                    },
+                    {
+                        "title": "Investigation",
+                        "data": "1. For DVT, perform duplex ultrasound (US)\r2. Perform ABG (arterial blood gas) and ECG (electrocardiogram)\r3. Perform echocardiogram to assess acute dilation of the left ventricle (LV)\r4. Check plasma D-dimer levels; may be normal\r5. Examine chest X-ray; may be normal\r6. Diagnostic tool: CT pulmonary angiography\r7. Consider ventilation-perfusion lung scanning in pregnancy\r"
+                    },
+                    {
+                        "title": "Treatment",
+                        "data": "> Note: Refer for ICU admission based on the findings and clinical assessment."
+                    },
+                    {
+                        "title": "In the Emergency Department",
+                        "data": "1. Administer high-flow oxygen to the patient via a mask.\r2. Establish intravenous (IV) access through a cannula and obtain a comprehensive set of laboratory tests:\r   - ABG (arterial blood gas)\r   - CBC (complete blood count)\r   - Serum creatinine\r   - Blood glucose\r\r3. If hypotension is suspected, consider administering 1-2 liters of saline or Ringer's solution.\r4. Seek assistance from a cardiologist or consider referring the patient to a nearest hospital."
+                    }
+                ]
+            },
+            {
+                "title": "Hypertensive urgency",
+                "sections": [
+                    {
+                        "title": "Patient History and Complaints",
+                        "data": "1. **Patient History:**\r   - Patient reports a history of hypertension (Are you currently experiencing hypertension?)\r\r2. **Patient Complaints:**\r   - Headache\r   - Dizziness\r   - Epistaxis (bleeding from the nose)\r   - Palpitation (irregular heartbeats or flutter)\r\r3. **Critical Checks for Signs of End-Organ Failure:**\r   - **Cardiovascular System (CVS):**\r     - Chest pain, palpitation, dyspnea\r       - *Question:* Is there any chest pain, tightness, or flutter?\r\r   - **Renal System (Renal):**\r     - Oliguria and confusion\r       - *Question:* Has your urine output changed, decreased, or do you feel drowsy?\r\r   - **Central Nervous System (CNS):**\r     - Headache, coma, convulsion, confusion (indicative of a stroke)\r       - *Question:* Are you experiencing headaches, weakness in your hands or legs, or convulsions?\r\r   - **Eye (Eye):**\r     - Subconjunctival hemorrhage or papilledema\r       - *Question:* Have you noticed any weakness in your eyes, difficulty in sight, or recent eye hemorrhage?\r\r4. **Other Conditions:**\r   - Diabetes Mellitus (DM)\r   - Ischemic Heart Disease (IHD)\r   - Stroke"
+                    },
+                    {
+                        "title": "Examination",
+                        "data": "- General\r  1. Count respiratory rate.\r  2. Count pulse; you may find tachycardia.\r  3. Check blood pressure; diastolic may be in the range of 120-125 mmHg.\r  4. Measure temperature.\r\r- Local\r  1. Perform a chest and heart examination; you may find accentuated heart sounds.\r  2. Perform a neurological exam.\r"
+                    },
+                    {
+                        "title": "Investigations",
+                        "data": ">Investigations to Exclude End-Organ Damage (EOD):\r\r1. ECG (Electrocardiogram)\r2. Chest X-ray\r3. Serum Creatinine"
+                    },
+                    {
+                        "title": "Treatment",
+                        "data": "**Treatment in ER Room:**\r\r**1. Asymptomatic with Normal Examination (Follow-up):**\r- If the patient is asymptomatic with a normal examination, follow-up may be recommended.\r\r**2. Hypertension (HTN) with Symptoms (Refer to Medical Team for Intervention):**\r- Refer to the medical team for further intervention.\r\r**Medical Interventions:**\r1. **ACE-I (Angiotensin-Converting Enzyme Inhibitor):**\r   - ACE inhibitors are commonly used for hypertension management.\r\r2. **BB (Beta-Blocker):**\r   - Beta-blockers may be considered as part of the treatment plan."
+                    },
+                    {
+                        "title": "In the Emergency Department (for Symptomatic Patients):",
+                        "data": "1. Start with ACE-I (Angiotensin-Converting Enzyme Inhibitor):\r   - Capoten or Captopril 25 mg tablet.\r   - Administer half tablet or 25 mg Capoten under the tongue.\r   - Measure blood pressure after half an hour.\r   - Target blood pressure should be under 160/100.\r   - If the target is not reached, repeat ACE-I with a maximum dose of 3 tablets (75 mg).\r\r2. If not responsive to ACE-I, apply Nitroderm 5 mg patch.\r\r3. If still not responsive, consult a cardiologist or refer to the nearest hospital.\r >Note:- Lasix (furosemide) ampule is not used in hypertensive emergencies, except in some cases such as pulmonary embolism (PE).\r>- It is crucial to exclude end-organ damage, and blood pressure should be reduced gradually within 24 hours.\r- **Ask the patient to regularly measure blood pressure in the clinic.**"
                     }
                 ]
             }
