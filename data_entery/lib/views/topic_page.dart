@@ -1,13 +1,11 @@
-import 'dart:developer';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:data_entery/views/custom_scaffold_page.dart';
 import 'package:data_entery/views/home_page.dart';
 import 'package:data_entery/widgets/expanded_tile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 import '../models/model.dart';
 import 'notes_page_view.dart';
 import 'topics_view.dart';
@@ -23,19 +21,12 @@ class TopicPage extends StatefulWidget {
 
 class _TopicPageState extends State<TopicPage> {
   late ScrollController _scrollController;
-  late List<GlobalKey> keys;
+
   bool _showFab = false;
   @override
   void initState() {
     super.initState();
-    // keys =
-    //     List.generate(widget.content.sections.length, (index) => GlobalKey());
     _scrollController = ScrollController();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   _scrollController.jumpTo((widget.index.toDouble() + 1) * 400);
-    //   log("${widget.index}from topic page");
-    //   scrollTo50(widget.index);
-    // });
     _scrollController.addListener(() {
       if (_scrollController.offset >=
           _scrollController.position.maxScrollExtent / 10) {
@@ -50,29 +41,18 @@ class _TopicPageState extends State<TopicPage> {
     });
   }
 
-  scrollTo50(int index) {
-    print(keys.length);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // This callback will be called after the frame has been built
-      RenderBox? renderBox =
-          keys[index].currentContext?.findRenderObject() as RenderBox?;
-
-      if (renderBox != null) {
-        // Get the position of the target widget
-        double offset = renderBox.localToGlobal(Offset.zero).dy;
-
-        // Jump to the position of the target widget
-        _scrollController.jumpTo(offset);
-      }
-    });
-  }
-
   void _scrollToTop() {
     _scrollController.animateTo(
       0,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -106,18 +86,19 @@ class _TopicPageState extends State<TopicPage> {
         slivers: [
           SliverAppBar(
             title: Text(
-              widget.content.title,
+              widget.content.title.title(),
               style: const TextStyle(
                 color: Colors.black87,
               ),
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context, customPageRoute(const HomePage()));
-                  },
-                  icon: const Icon(Icons.home_outlined))
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context, customPageRoute(const HomePage()));
+                },
+                icon: const Icon(Icons.home_outlined),
+              ),
             ],
             pinned: true,
             bottom: PreferredSize(
@@ -137,6 +118,7 @@ class _TopicPageState extends State<TopicPage> {
               itemCount: widget.content.sections.length,
               itemBuilder: (context, index) {
                 final medicalSection = widget.content.sections[index];
+
                 return Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

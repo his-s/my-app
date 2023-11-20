@@ -84,6 +84,15 @@
                         "data": "1. Place the patient on a bed or trolley and support their back by placing something underneath.\r2. Administer high-flow oxygen through a face mask.\r3. Establish IV Access:\r   - Access IV with a cannula.\r4. Nebulized Salbutamol Session:\r   - Administer Farcolin: Nebulized salbutamol session (1 cm Farcolin + 2 cm saline) every 15-30 minutes.\r5. Insert a Catheter.\r6. Seek Help:\r   - Ask for assistance from a cardiologist or refer the patient to the nearest hospital.\r7. Administer Medications:\r   - Diuretic:\r     - Furosemide (Frusemide) 40-80 mg IV\r       or\r     - Lasix 40 mg amp, 1-2 amp IV slowly.\r   - Nitrate:\r     - Nitroglycerin 5 mg under the tongue if systolic blood pressure > 90.\r   - Antiemetic:\r     - Administer antiemetic or Primperan amp IM or IV slowly in case of vomiting.\r   - Chest Pain Management:\r     - Venodilator (Opioid Narcotic):\r       1. Pethidine or Nalufin amp\r       2. Administer IM or dissolve in 10 cm saline and give 5 cm every 5 minutes slowly.\r\r> **Note for Pethidine:**\r> Do not administer medications if the patient is drowsy or confused.\r"
                     }
                 ]
+            },
+            {
+                "title": "Pulmonary Embolism",
+                "sections": [
+                    {
+                        "title": "History",
+                        "data": "1. **Respiratory Symptoms**\r   - Acute dyspnea (Is there chest tightness, and since when?)\r   - Cough\r   - Hemoptysis\r   - Cyanosis\r\r2. **Sudden Stitching Chest Pain**\r   - Is there pain in the chest that increases with breathing or coughing?\r\r3. **Fever or Jaundice**\r   - Do you have a fever?\r   - Is your eye yellow?\r\r4. **Causes**\r   - DVT (Have you experienced any embolism before in your leg, or was it inflamed before with pain?)\r   - Surgery (Did you undergo any surgeries within the past 4 weeks?)\r   - Bedridden (Have you been in bed for more than 3 days?)\r   - Trauma (Have you experienced any hits or been in an accident?)\r   - Malignancy (Do you have another disease or are you taking medication?)\r"
+                    }
+                ]
             }
         ]
     },
@@ -93,6 +102,42 @@
     },
     {
         "title": "Emergency Pediatrics",
+        "sections": []
+    },
+    {
+        "title": "Emergency Toxicology",
+        "sections": []
+    },
+    {
+        "title": "Clinic Medicine",
+        "sections": []
+    },
+    {
+        "title": "Clinic Surgery",
+        "sections": []
+    },
+    {
+        "title": "Clinic Peditrics",
+        "sections": []
+    },
+    {
+        "title": "Clinic Opthalomolgy",
+        "sections": []
+    },
+    {
+        "title": "Clinic Dermatology",
+        "sections": []
+    },
+    {
+        "title": "Clinic ENT",
+        "sections": []
+    },
+    {
+        "title": "Clinic Obs&Gyna",
+        "sections": []
+    },
+    {
+        "title": "Drugs",
         "sections": []
     }
 ]

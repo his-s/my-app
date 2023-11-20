@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
           // ),
           Consumer(builder: (context, ref, child) {
             final appData = ref.watch(appDataProvider);
-            return SliverList.builder(
+            return SliverGrid.builder(
               itemCount: appData.medicals.length,
               itemBuilder: (context, index) {
                 final title = appData.medicals[index].title;
@@ -194,7 +194,9 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     ...title.split(" ").toList().map((e) {
                                       if (e.toLowerCase() ==
-                                          "Emergency".toLowerCase()) {
+                                              "Emergency".toLowerCase() ||
+                                          e.toLowerCase() ==
+                                              "clinic".toLowerCase()) {
                                         return Text(
                                           e,
                                           style: GoogleFonts.roboto(
@@ -219,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                                           color: getRandomColor(),
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ]),
                               const Spacer(),
                             ],
@@ -239,6 +241,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 600, mainAxisExtent: 125),
             );
           })
         ],

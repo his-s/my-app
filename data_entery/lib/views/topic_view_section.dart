@@ -1,17 +1,13 @@
-import 'package:data_entery/main.dart';
+import 'dart:io';
+
 import 'package:data_entery/models/medical_content.dart';
 import 'package:data_entery/models/medical_section.dart';
-import 'package:data_entery/views/custom_scaffold_page.dart';
-import 'package:data_entery/views/topic_page.dart';
-import 'package:data_entery/views/topics_view.dart';
 import 'package:data_entery/widgets/expanded_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'pages.dart';
 
-import 'home_page.dart';
-
-class TopicSectionView extends StatelessWidget {
+class TopicSectionView extends StatefulWidget {
   const TopicSectionView(
       {super.key,
       required this.title,
@@ -20,31 +16,78 @@ class TopicSectionView extends StatelessWidget {
   final String title;
   final MedicalSection medicalSection;
   final MedicalContent content;
+
+  @override
+  State<TopicSectionView> createState() => _TopicSectionViewState();
+}
+
+class _TopicSectionViewState extends State<TopicSectionView> {
+  late final ScrollController _scrollController;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           SliverAppBar(
+            pinned: true,
             leading: IconButton(
               onPressed: () {
                 Navigator.pushReplacement(
-                    context, customPageRoute(TopicPage(content: content)));
+                  context,
+                  customPageRoute(
+                    TopicPage(content: widget.content),
+                  ),
+                );
               },
-              icon: const Icon(Icons.arrow_back_ios),
+              icon: Icon(
+                Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
+              ),
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context, customPageRoute(const HomePage()));
-                  },
-                  icon: const Icon(Icons.home_outlined))
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    customPageRoute(
+                      const HomePage(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.home_outlined),
+              ),
             ],
             title: Text(
-              title,
+              widget.title.title(),
               style: const TextStyle(
                 color: Colors.black87,
+              ),
+            ),
+            bottom: PreferredSize(
+              preferredSize: const Size(400, 0),
+              child: LinearProgressIndicator(
+                value: _scrollController.hasClients
+                    ? _scrollController.offset /
+                        _scrollController.position.maxScrollExtent
+                    : 0.0,
+                backgroundColor: Colors.grey[200],
+                valueColor:
+                    const AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
               ),
             ),
           ),
@@ -59,7 +102,7 @@ class TopicSectionView extends StatelessWidget {
                   color: Colors.indigo,
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    medicalSection.title.title(),
+                    widget.medicalSection.title.title(),
                     style: GoogleFonts.roboto(
                       color: Colors.white,
                     ),
@@ -67,7 +110,7 @@ class TopicSectionView extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: MarkdownB(medicalSection: medicalSection),
+                  child: MarkdownB(medicalSection: widget.medicalSection),
                 ),
               ],
             ),

@@ -36,7 +36,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         useMaterial3: true,
         appBarTheme: AppBarTheme(
           titleTextStyle: GoogleFonts.roboto(
-            fontSize: 17,
+            fontSize: 16,
             fontWeight: FontWeight.w400,
           ),
         ),

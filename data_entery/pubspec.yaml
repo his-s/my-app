@@ -43,6 +43,7 @@ dependencies:
   scroll_to_index: ^3.0.1
   ionicons: ^0.2.2
   animated_text_kit: ^4.2.2
+  sticky_headers: ^0.3.0+2
   
 
 dev_dependencies:

@@ -2,9 +2,7 @@ import 'package:data_entery/core/constants/app_images.dart';
 import 'package:data_entery/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../models/model.dart';
-import 'preview_page.dart';
 import 'topic_page.dart';
 
 class TopicsView extends StatelessWidget {
@@ -62,51 +60,58 @@ class TopicsView extends StatelessWidget {
               ),
             ),
           ),
-          SliverList.builder(
-              itemCount: sections.length,
-              itemBuilder: (context, index) {
-                final branchtitle = sections[index].title;
-                final branchSections = sections[index].sections;
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  child: ListTile(
-                    tileColor: Colors.grey.shade200,
-                    contentPadding: const EdgeInsets.only(
-                        right: 0, left: 10, top: 2, bottom: 2),
-                    title: Text(
-                      branchtitle.title(),
-                    ),
-                    leading: Image.asset(
-                      topicImg,
-                    ),
-                    subtitle: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: getRandomColor(),
-                      )),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        customPageRoute(
-                          TopicPage(
-                            content: sections[index],
-                          ),
-                        ),
-                      );
-                    },
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.bookmark_outline,
-                        size: 20,
+          SliverGrid.builder(
+            itemCount: sections.length,
+            itemBuilder: (context, index) {
+              final branchtitle = sections[index].title;
+              final branchSections = sections[index].sections;
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: ListTile(
+                  tileColor: Colors.grey.shade200,
+                  contentPadding: const EdgeInsets.only(
+                      right: 0, left: 10, top: 2, bottom: 2),
+                  title: Text(
+                    branchtitle.title(),
+                  ),
+                  leading: Image.asset(
+                    topicImg,
+                  ),
+                  subtitle: Container(
+                    width: 150,
+                    height: 3,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 2, color: getRandomColor()),
                       ),
                     ),
                   ),
-                );
-              }),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      customPageRoute(
+                        TopicPage(
+                          content: sections[index],
+                        ),
+                      ),
+                    );
+                  },
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.bookmark_outline,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              );
+            },
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 600,
+              mainAxisExtent: 95,
+            ),
+          ),
         ],
       ),
     );
