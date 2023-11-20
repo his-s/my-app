@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:data_entery/views/custom_scaffold_page.dart';
+import 'package:data_entery/views/home_page.dart';
 import 'package:data_entery/widgets/expanded_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
 import '../models/model.dart';
 import 'notes_page_view.dart';
 import 'topics_view.dart';
@@ -109,6 +111,14 @@ class _TopicPageState extends State<TopicPage> {
                 color: Colors.black87,
               ),
             ),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context, customPageRoute(const HomePage()));
+                  },
+                  icon: const Icon(Icons.home_outlined))
+            ],
             pinned: true,
             bottom: PreferredSize(
               preferredSize: const Size(400, 0),

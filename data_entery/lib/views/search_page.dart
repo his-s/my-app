@@ -4,10 +4,12 @@ import 'package:data_entery/data/data_state_notifier.dart';
 import 'package:data_entery/views/custom_scaffold_page.dart';
 import 'package:data_entery/views/preview_page.dart';
 import 'package:data_entery/views/topic_page.dart';
+import 'package:data_entery/views/topic_view_section.dart';
 import 'package:data_entery/views/topics_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../models/model.dart';
 
@@ -47,6 +49,12 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     // Initially, display all items
   }
 
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   void _performSearch(String query) {
     final appData = ref.watch(appDataProvider);
     appData.updateSearch(query);
@@ -58,22 +66,25 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     final appData = ref.watch(appDataProvider);
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.chevron_left), // Use the chevron left icon
-          onPressed: () {
-            Navigator.of(context).pop(); // Add your pop logic here
-          },
+        // leading: IconButton(
+        //   icon: const Icon(Icons.chevron_left), // Use the chevron left icon
+        //   onPressed: () {
+        //     Navigator.of(context).pop(); // Add your pop logic here
+        //   },
+        // ),
+
+        title: const Text(
+          'Search',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
         ),
-        backgroundColor: Colors.indigoAccent,
-        foregroundColor: Colors.white,
-        title: const Text('Search Page'),
         actions: [
           const SizedBox(
             width: 50,
           ),
           Expanded(
             child: TextField(
-              autofocus: true,
               style: GoogleFonts.roboto(
                 color: Colors.white,
               ),
@@ -81,11 +92,11 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               onChanged: _performSearch,
               decoration: InputDecoration(
                 hintStyle: GoogleFonts.roboto(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.w300,
                   fontSize: 15,
                 ),
-                hintText: 'Search...',
+                hintText: 'Search',
               ),
             ),
           )
@@ -97,43 +108,51 @@ class _SearchPageState extends ConsumerState<SearchPage> {
             child: ListView.builder(
               itemCount: appData.searched.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(appData.searched[index].title.title()),
-                  subtitle: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                          appData.searched[index].sections.length, (i) {
-                        final text = appData.searched[index].sections[i].title;
-                        return TextButton(
-                          onPressed: () {
-                            log(i.toString());
-                            Navigator.push(
-                              context,
-                              customPageRoute(
-                                TopicPage(
-                                  content: appData.searched[index],
-                                  index: i,
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: const Icon(Ionicons.flash_outline),
+                    tileColor: Colors.grey.shade200,
+                    title: Text(appData.searched[index].title.title()),
+                    subtitle: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                            appData.searched[index].sections.length, (i) {
+                          final text =
+                              appData.searched[index].sections[i].title;
+                          return TextButton(
+                            onPressed: () {
+                              log(i.toString());
+                              Navigator.push(
+                                context,
+                                customPageRoute(
+                                  TopicSectionView(
+                                    content: appData.searched[index],
+                                    medicalSection:
+                                        appData.searched[index].sections[i],
+                                    title: appData.searched[index].title,
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          child: Text(text),
-                        );
-                      }),
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      customPageRoute(
-                        TopicPage(
-                          content: appData.searched[index],
-                          index: 0,
-                        ),
+                              );
+                            },
+                            child: Text(text),
+                          );
+                        }),
                       ),
-                    );
-                  },
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        customPageRoute(
+                          TopicPage(
+                            content: appData.searched[index],
+                            index: 0,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 );
               },
             ),

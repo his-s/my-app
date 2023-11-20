@@ -1,11 +1,9 @@
 import 'package:data_entery/core/router/app_router.dart';
-import 'package:data_entery/core/router/routers.dart';
 import 'package:data_entery/data/data_state_notifier.dart';
 import 'package:data_entery/views/topics_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'views/home_page.dart';
 
 void main(List<String> args) {
   runApp(

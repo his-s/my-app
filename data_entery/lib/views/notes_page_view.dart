@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:data_entery/data/data_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'preview_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NotesPageView extends StatefulWidget {
   const NotesPageView({super.key, required this.id, required this.title});
@@ -22,9 +19,10 @@ class _NotesPageViewState extends State<NotesPageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        foregroundColor: Colors.white,
-        title: Text('${widget.title} Notes Editor'),
+        title: Text(
+          '${widget.title} Note Editor',
+          style: const TextStyle(color: Colors.black87),
+        ),
         actions: const [],
       ),
       body: ListView(

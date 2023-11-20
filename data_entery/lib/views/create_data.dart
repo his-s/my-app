@@ -5,6 +5,7 @@ import 'package:data_entery/models/medical_content.dart';
 import 'package:data_entery/models/medical_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CreateDataPage extends StatefulWidget {
@@ -24,9 +25,11 @@ class _CreateDataPageState extends State<CreateDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Data'),
-        backgroundColor: Colors.indigoAccent,
-        foregroundColor: Colors.white,
+        title: const Text(
+          'Create Topic',
+          style: TextStyle(color: Colors.black87),
+        ),
+        actions: const [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -151,11 +154,10 @@ class _SectionListWidgetState extends State<SectionListWidget> {
   Padding newMethod() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListTile(
-        tileColor: Colors.indigoAccent,
-        textColor: Colors.white,
-        title: const Text("Add Section"),
-        onTap: () {
+      child: ElevatedButton.icon(
+        icon: const Icon(Ionicons.add),
+        label: const Text("Add Section"),
+        onPressed: () {
           setState(() {
             sections.add(MedicalSection(
               title: '',

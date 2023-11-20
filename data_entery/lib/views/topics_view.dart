@@ -81,6 +81,7 @@ class TopicsView extends StatelessWidget {
                       topicImg,
                     ),
                     subtitle: Container(
+                      width: 150,
                       decoration: BoxDecoration(
                           border: Border.all(
                         color: getRandomColor(),
