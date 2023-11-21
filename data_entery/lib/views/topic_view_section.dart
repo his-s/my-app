@@ -23,6 +23,7 @@ class TopicSectionView extends StatefulWidget {
 
 class _TopicSectionViewState extends State<TopicSectionView> {
   late final ScrollController _scrollController;
+  bool _blockScroll = false;
   @override
   void initState() {
     super.initState();
@@ -43,6 +44,9 @@ class _TopicSectionViewState extends State<TopicSectionView> {
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
+        physics: _blockScroll
+            ? const NeverScrollableScrollPhysics()
+            : const ScrollPhysics(),
         slivers: [
           SliverAppBar(
             pinned: true,
@@ -110,7 +114,13 @@ class _TopicSectionViewState extends State<TopicSectionView> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: MarkdownB(medicalSection: widget.medicalSection),
+                  child: MarkdownB(
+                      medicalSection: widget.medicalSection,
+                      blockScroll: (value) {
+                        setState(() {
+                          _blockScroll = value;
+                        });
+                      }),
                 ),
               ],
             ),

@@ -21,7 +21,7 @@ class TopicPage extends StatefulWidget {
 
 class _TopicPageState extends State<TopicPage> {
   late ScrollController _scrollController;
-
+  bool _blockScroll = false;
   bool _showFab = false;
   @override
   void initState() {
@@ -83,6 +83,9 @@ class _TopicPageState extends State<TopicPage> {
             ),
       body: CustomScrollView(
         controller: _scrollController,
+        physics: _blockScroll
+            ? const NeverScrollableScrollPhysics()
+            : const ScrollPhysics(),
         slivers: [
           SliverAppBar(
             title: Text(
@@ -138,7 +141,14 @@ class _TopicPageState extends State<TopicPage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: MarkdownB(medicalSection: medicalSection),
+                        child: MarkdownB(
+                          medicalSection: medicalSection,
+                          blockScroll: (value) {
+                            setState(() {
+                              _blockScroll = value;
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),

@@ -30,11 +30,10 @@ class _CreateDataPageState extends State<CreateDataPage> {
 
   @override
   void dispose() {
-    topicController.dispose();
-    sectionDataController.dispose();
-    sectionDataController.dispose();
-
     super.dispose();
+    // topicController.dispose();
+    // sectionDataController.dispose();
+    // sectionDataController.dispose();
   }
 
   @override
