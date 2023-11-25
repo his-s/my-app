@@ -11,4 +11,4 @@ final currentUser = StateProvider<bool>((ref) {
 });
 
 final authStateProvider = StateNotifierProvider<AuthStateNotifier, AuthState>(
-    (ref) => AuthStateNotifier(supabase, AuthController(supabase)));
+    (ref) => AuthStateNotifier(supabase, AuthController(supabase), ref));

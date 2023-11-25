@@ -1,14 +1,17 @@
 import 'dart:developer';
 import 'package:data_entery/data/controller/auth_controller.dart';
+import 'package:data_entery/providers/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'
     show AuthResponse, Supabase, User;
 import '../state/auth_state.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
-  AuthStateNotifier(this._supabase, this._service) : super(AuthState.empty());
+  AuthStateNotifier(this._supabase, this._service, this.ref)
+      : super(AuthState.empty());
   final AuthController _service;
   final Supabase _supabase;
+  final StateNotifierProviderRef ref;
 
   Future<void> isUserHere() async {
     if (_supabase.client.auth.currentUser != null) {
@@ -49,6 +52,7 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     try {
       await _supabase.client.auth.signOut();
       state = state.copyWith(isLoggedIn: false, id: '', user: null);
+      ref.read(userStateProvider.notifier).resetUser();
     } catch (e) {
       log(e.toString());
     }
