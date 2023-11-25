@@ -13,7 +13,10 @@ const cObs = "assets/images/obstetrics.png";
 const cMed = "assets/images/vaccination.png";
 const drugs = "assets/images/medicine.png";
 const seach = "assets/images/flash-sale.png";
-
+const noImage = "assets/images/no-pictures.png";
+const premium = 'assets/images/crown.png';
+const premiumUser = 'assets/images/premium1.png';
+const freeUser = 'assets/images/dragon.png';
 List<String> chaptersImg = [
   eMed,
   eSur,
