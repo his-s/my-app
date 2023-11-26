@@ -37,8 +37,8 @@ class _MyAppState extends ConsumerState<MyApp> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final appData = ref.read(appDataProvider.notifier);
       final appUser = ref.read(userStateProvider.notifier);
-      appData.loadAllArticles();
-      appData.loadAllTopics();
+      appData.getArticles();
+      appData.getSections();
       appUser.getUser();
     });
   }

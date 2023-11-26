@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/data/repositories/interfaces/app_data_inferface.dart';
 
@@ -10,19 +12,26 @@ class LocalAppData implements AppDataInterface {
   List<Article> get articles => _articles;
   @override
   Future<List<Article>> getArticles() {
-    // TODO: implement getArticles
-    throw UnimplementedError();
+    log('U are now asking from local Data');
+    return Future.delayed(const Duration(milliseconds: 1)).then((value) => [
+          Article(
+            id: 'id',
+            title: 'title',
+            premium: true,
+            orderId: 0,
+            authorName: 'authorName',
+            categories: categories,
+          ),
+        ]);
   }
 
   @override
   List<Category> getCategories() {
-    // TODO: implement getCategories
-    throw UnimplementedError();
+    return categories;
   }
 
   @override
   List<Section> getSections() {
-    // TODO: implement getSections
-    throw UnimplementedError();
+    return sections;
   }
 }

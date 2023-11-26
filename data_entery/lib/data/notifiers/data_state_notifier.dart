@@ -1,31 +1,22 @@
 import 'package:data_entery/data/models/articles_model.dart';
-import 'package:data_entery/data/repositories/implementation/local_app_data.dart';
-import 'package:data_entery/data/repositories/implementation/remote_app_data.dart';
 import 'package:data_entery/data/state/app_state.dart';
+import 'package:data_entery/providers/app_data_repo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AppDataNotifier extends StateNotifier<AppState> {
-  final LocalAppData _localAppData;
-  final RemoteAppData _remoteAppData;
-  final Supabase _supabase;
-  AppDataNotifier(this._supabase, this._localAppData, this._remoteAppData)
-      : super(AppState.empty());
-  loadAllArticles() async {
-    List<Article> articles = [];
-    List<Category> categories = [];
-    if (articles.isEmpty) {
-      state = state.copyWith(isLoading: true);
-      // List<Map<String, dynamic>> data = await _supabase.client
-      //     .from('articles')
-      //     .select('*,categories(*,sections(*,subsections(*)))');
-      // articles = data.map((e) => Article.fromMap(e)).toList();
+  final StateNotifierProviderRef _ref;
 
-      // for (var element in articles) {
-      //   categories = element.categories;
-      // }
-      articles = await _remoteAppData.getArticles();
-      categories = _remoteAppData.getCategories();
+  AppDataNotifier(
+    this._ref,
+  ) : super(AppState.empty());
+  List<Article> articles = [];
+  List<Category> categories = [];
+  getArticles() async {
+    if (articles.isEmpty) {
+      final appDataRepo = await _ref.watch(appDataRepoProvider.future);
+      state = state.copyWith(isLoading: true);
+      articles = await appDataRepo.getArticles();
+      categories = appDataRepo.getCategories();
       state = state.copyWith(
           articles: articles, isLoading: false, categories: categories);
     } else {
@@ -33,12 +24,11 @@ class AppDataNotifier extends StateNotifier<AppState> {
     }
   }
 
-  loadAllTopics() async {
+  getSections() async {
     state = state.copyWith(isLoading: true);
-    List<Map<String, dynamic>> data =
-        await _supabase.client.from('sections').select('*,subsections(*)');
-    List<Section> topics = data.map((e) => Section.fromMap(e)).toList();
-    state = state.copyWith(sections: topics, isLoading: false);
+    final appDataRepo = await _ref.watch(appDataRepoProvider.future);
+    state =
+        state.copyWith(sections: appDataRepo.getSections(), isLoading: false);
   }
 
   updateSearch(String value) {

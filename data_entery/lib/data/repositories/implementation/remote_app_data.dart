@@ -16,6 +16,7 @@ class RemoteAppData implements AppDataInterface {
   List<Article> get articles => _articles;
   @override
   Future<List<Article>> getArticles() async {
+    log('U are now asking from remote Data');
     try {
       if (_articles.isEmpty) {
         List<Map<String, dynamic>> data = await _supabase.client
