@@ -85,7 +85,8 @@ class Users extends Table {
   IntColumn get time => integer().named(ModelValues.time)();
 }
 
-@DriftDatabase(tables: [Articles, Categories, Codes, Sections, Users])
+@DriftDatabase(
+    tables: [Articles, Categories, Codes, Sections, Users, Subsections])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
   @override

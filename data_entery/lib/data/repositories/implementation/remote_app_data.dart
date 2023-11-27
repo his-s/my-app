@@ -26,16 +26,6 @@ class RemoteAppData implements AppDataInterface {
             .from('articles')
             .select('*,categories(*,sections(*,subsections(*)))');
         _articles = data.map((e) => Article.fromMap(e)).toList();
-        await appDatabase.into(appDatabase.articles).insert(
-              d.ArticlesCompanion.insert(
-                id: _articles.first.id,
-                title: _articles.first.title,
-                order: Value(articles.first.orderId),
-                authorName: Value(articles.first.authorName),
-                premium: Value(articles.first.premium),
-                createdAt: Value(articles.first.createdAt),
-              ),
-            );
 
         return _articles;
       } else {

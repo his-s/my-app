@@ -42,12 +42,12 @@ class LocalAppData implements AppDataInterface {
   }
 
   @override
-  List<Category> getCategories() {
+  Future<List<Category>> getCategories() async {
     return categories;
   }
 
   @override
-  List<Section> getSections() {
+  Future<List<Section>> getSections() async {
     return sections;
   }
 }

@@ -1,5 +1,12 @@
 import 'package:data_entery/data/database/database.dart'
-    show AppDatabase, ArticlesCompanion, CategoriesCompanion, CodesCompanion;
+    show
+        AppDatabase,
+        ArticlesCompanion,
+        CategoriesCompanion,
+        CodesCompanion,
+        SectionsCompanion,
+        SubsectionsCompanion,
+        UsersCompanion;
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/data/models/code_model.dart';
 import 'package:data_entery/data/models/user_model.dart';
@@ -56,20 +63,47 @@ class LocalDatabase implements DatabaseInterface {
   }
 
   @override
-  Future<void> insertSection(Section section) {
-    // TODO: implement insertSection
-    throw UnimplementedError();
+  Future<void> insertSection(Section section) async {
+    await _database.into(_database.sections).insert(SectionsCompanion.insert(
+          id: section.id,
+          categorgId: section.categoryId,
+          title: section.title,
+          orderId: section.orderId,
+          createdAt: section.createdAt,
+          articleId: section.articleId,
+          premium: Value(section.premium),
+        ));
   }
 
   @override
-  Future<void> insertSubscetion(Subsection subsection) {
-    // TODO: implement insertSubscetion
-    throw UnimplementedError();
+  Future<void> insertSubscetion(Subsection subsection) async {
+    await _database.into(_database.subsections).insert(
+          SubsectionsCompanion.insert(
+            id: subsection.id,
+            sectionId: subsection.sectionId,
+            title: subsection.title,
+            data: subsection.data,
+            categoryId: subsection.categoryId,
+            orderId: subsection.orderId,
+            createdAt: subsection.createdAt,
+            articleId: subsection.articleId,
+          ),
+        );
   }
 
   @override
-  Future<void> insertUser(AppUser user) {
-    // TODO: implement insertUser
-    throw UnimplementedError();
+  Future<void> insertUser(AppUser user) async {
+    await _database.into(_database.users).insert(
+          UsersCompanion.insert(
+            id: user.id,
+            createdAt: user.createdAt ?? DateTime.now(),
+            name: user.name ?? '',
+            subscribedAt: user.subscribedAt ?? DateTime.now(),
+            tel: user.tel ?? '',
+            email: user.email,
+            activationCode: user.activationCode ?? '',
+            time: user.time ?? 0,
+          ),
+        );
   }
 }

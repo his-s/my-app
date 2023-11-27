@@ -1976,6 +1976,416 @@ class UsersCompanion extends UpdateCompanion<User> {
   }
 }
 
+class $SubsectionsTable extends Subsections
+    with TableInfo<$SubsectionsTable, Subsection> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SubsectionsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
+  static const VerificationMeta _sectionIdMeta =
+      const VerificationMeta('sectionId');
+  @override
+  late final GeneratedColumn<String> sectionId = GeneratedColumn<String>(
+      'section_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+      'title', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _dataMeta = const VerificationMeta('data');
+  @override
+  late final GeneratedColumn<String> data = GeneratedColumn<String>(
+      'data', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _categoryIdMeta =
+      const VerificationMeta('categoryId');
+  @override
+  late final GeneratedColumn<String> categoryId = GeneratedColumn<String>(
+      'category_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _orderIdMeta =
+      const VerificationMeta('orderId');
+  @override
+  late final GeneratedColumn<int> orderId = GeneratedColumn<int>(
+      'order_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _articleIdMeta =
+      const VerificationMeta('articleId');
+  @override
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+      'article_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, sectionId, title, data, categoryId, orderId, createdAt, articleId];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'subsections';
+  @override
+  VerificationContext validateIntegrity(Insertable<Subsection> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('section_id')) {
+      context.handle(_sectionIdMeta,
+          sectionId.isAcceptableOrUnknown(data['section_id']!, _sectionIdMeta));
+    } else if (isInserting) {
+      context.missing(_sectionIdMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('data')) {
+      context.handle(
+          _dataMeta, this.data.isAcceptableOrUnknown(data['data']!, _dataMeta));
+    } else if (isInserting) {
+      context.missing(_dataMeta);
+    }
+    if (data.containsKey('category_id')) {
+      context.handle(
+          _categoryIdMeta,
+          categoryId.isAcceptableOrUnknown(
+              data['category_id']!, _categoryIdMeta));
+    } else if (isInserting) {
+      context.missing(_categoryIdMeta);
+    }
+    if (data.containsKey('order_id')) {
+      context.handle(_orderIdMeta,
+          orderId.isAcceptableOrUnknown(data['order_id']!, _orderIdMeta));
+    } else if (isInserting) {
+      context.missing(_orderIdMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('article_id')) {
+      context.handle(_articleIdMeta,
+          articleId.isAcceptableOrUnknown(data['article_id']!, _articleIdMeta));
+    } else if (isInserting) {
+      context.missing(_articleIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => const {};
+  @override
+  Subsection map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Subsection(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      sectionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}section_id'])!,
+      title: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
+      data: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}data'])!,
+      categoryId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category_id'])!,
+      orderId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}order_id'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
+      articleId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}article_id'])!,
+    );
+  }
+
+  @override
+  $SubsectionsTable createAlias(String alias) {
+    return $SubsectionsTable(attachedDatabase, alias);
+  }
+}
+
+class Subsection extends DataClass implements Insertable<Subsection> {
+  final String id;
+  final String sectionId;
+  final String title;
+  final String data;
+  final String categoryId;
+  final int orderId;
+  final DateTime createdAt;
+  final String articleId;
+  const Subsection(
+      {required this.id,
+      required this.sectionId,
+      required this.title,
+      required this.data,
+      required this.categoryId,
+      required this.orderId,
+      required this.createdAt,
+      required this.articleId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['section_id'] = Variable<String>(sectionId);
+    map['title'] = Variable<String>(title);
+    map['data'] = Variable<String>(data);
+    map['category_id'] = Variable<String>(categoryId);
+    map['order_id'] = Variable<int>(orderId);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['article_id'] = Variable<String>(articleId);
+    return map;
+  }
+
+  SubsectionsCompanion toCompanion(bool nullToAbsent) {
+    return SubsectionsCompanion(
+      id: Value(id),
+      sectionId: Value(sectionId),
+      title: Value(title),
+      data: Value(data),
+      categoryId: Value(categoryId),
+      orderId: Value(orderId),
+      createdAt: Value(createdAt),
+      articleId: Value(articleId),
+    );
+  }
+
+  factory Subsection.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Subsection(
+      id: serializer.fromJson<String>(json['id']),
+      sectionId: serializer.fromJson<String>(json['sectionId']),
+      title: serializer.fromJson<String>(json['title']),
+      data: serializer.fromJson<String>(json['data']),
+      categoryId: serializer.fromJson<String>(json['categoryId']),
+      orderId: serializer.fromJson<int>(json['orderId']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      articleId: serializer.fromJson<String>(json['articleId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'sectionId': serializer.toJson<String>(sectionId),
+      'title': serializer.toJson<String>(title),
+      'data': serializer.toJson<String>(data),
+      'categoryId': serializer.toJson<String>(categoryId),
+      'orderId': serializer.toJson<int>(orderId),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'articleId': serializer.toJson<String>(articleId),
+    };
+  }
+
+  Subsection copyWith(
+          {String? id,
+          String? sectionId,
+          String? title,
+          String? data,
+          String? categoryId,
+          int? orderId,
+          DateTime? createdAt,
+          String? articleId}) =>
+      Subsection(
+        id: id ?? this.id,
+        sectionId: sectionId ?? this.sectionId,
+        title: title ?? this.title,
+        data: data ?? this.data,
+        categoryId: categoryId ?? this.categoryId,
+        orderId: orderId ?? this.orderId,
+        createdAt: createdAt ?? this.createdAt,
+        articleId: articleId ?? this.articleId,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('Subsection(')
+          ..write('id: $id, ')
+          ..write('sectionId: $sectionId, ')
+          ..write('title: $title, ')
+          ..write('data: $data, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('orderId: $orderId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('articleId: $articleId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id, sectionId, title, data, categoryId, orderId, createdAt, articleId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Subsection &&
+          other.id == this.id &&
+          other.sectionId == this.sectionId &&
+          other.title == this.title &&
+          other.data == this.data &&
+          other.categoryId == this.categoryId &&
+          other.orderId == this.orderId &&
+          other.createdAt == this.createdAt &&
+          other.articleId == this.articleId);
+}
+
+class SubsectionsCompanion extends UpdateCompanion<Subsection> {
+  final Value<String> id;
+  final Value<String> sectionId;
+  final Value<String> title;
+  final Value<String> data;
+  final Value<String> categoryId;
+  final Value<int> orderId;
+  final Value<DateTime> createdAt;
+  final Value<String> articleId;
+  final Value<int> rowid;
+  const SubsectionsCompanion({
+    this.id = const Value.absent(),
+    this.sectionId = const Value.absent(),
+    this.title = const Value.absent(),
+    this.data = const Value.absent(),
+    this.categoryId = const Value.absent(),
+    this.orderId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.articleId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SubsectionsCompanion.insert({
+    required String id,
+    required String sectionId,
+    required String title,
+    required String data,
+    required String categoryId,
+    required int orderId,
+    required DateTime createdAt,
+    required String articleId,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        sectionId = Value(sectionId),
+        title = Value(title),
+        data = Value(data),
+        categoryId = Value(categoryId),
+        orderId = Value(orderId),
+        createdAt = Value(createdAt),
+        articleId = Value(articleId);
+  static Insertable<Subsection> custom({
+    Expression<String>? id,
+    Expression<String>? sectionId,
+    Expression<String>? title,
+    Expression<String>? data,
+    Expression<String>? categoryId,
+    Expression<int>? orderId,
+    Expression<DateTime>? createdAt,
+    Expression<String>? articleId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (sectionId != null) 'section_id': sectionId,
+      if (title != null) 'title': title,
+      if (data != null) 'data': data,
+      if (categoryId != null) 'category_id': categoryId,
+      if (orderId != null) 'order_id': orderId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (articleId != null) 'article_id': articleId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SubsectionsCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? sectionId,
+      Value<String>? title,
+      Value<String>? data,
+      Value<String>? categoryId,
+      Value<int>? orderId,
+      Value<DateTime>? createdAt,
+      Value<String>? articleId,
+      Value<int>? rowid}) {
+    return SubsectionsCompanion(
+      id: id ?? this.id,
+      sectionId: sectionId ?? this.sectionId,
+      title: title ?? this.title,
+      data: data ?? this.data,
+      categoryId: categoryId ?? this.categoryId,
+      orderId: orderId ?? this.orderId,
+      createdAt: createdAt ?? this.createdAt,
+      articleId: articleId ?? this.articleId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (sectionId.present) {
+      map['section_id'] = Variable<String>(sectionId.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (data.present) {
+      map['data'] = Variable<String>(data.value);
+    }
+    if (categoryId.present) {
+      map['category_id'] = Variable<String>(categoryId.value);
+    }
+    if (orderId.present) {
+      map['order_id'] = Variable<int>(orderId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (articleId.present) {
+      map['article_id'] = Variable<String>(articleId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SubsectionsCompanion(')
+          ..write('id: $id, ')
+          ..write('sectionId: $sectionId, ')
+          ..write('title: $title, ')
+          ..write('data: $data, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('orderId: $orderId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('articleId: $articleId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   late final $ArticlesTable articles = $ArticlesTable(this);
@@ -1983,10 +2393,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CodesTable codes = $CodesTable(this);
   late final $SectionsTable sections = $SectionsTable(this);
   late final $UsersTable users = $UsersTable(this);
+  late final $SubsectionsTable subsections = $SubsectionsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [articles, categories, codes, sections, users];
+      [articles, categories, codes, sections, users, subsections];
 }
