@@ -19,4 +19,10 @@ class ModelValues {
   static const subscribedAt = 'subscribed_at';
   static const email = 'email';
   static const time = 'time';
+  static const code = 'code';
+  static const userId = 'user_id';
+  static const providerName = 'provider_name';
+  static const subInMonth = 'subscription_months';
+  static const price = 'price';
+  static const isAvailable = 'is_available';
 }

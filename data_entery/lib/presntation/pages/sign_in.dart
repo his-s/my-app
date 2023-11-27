@@ -1,9 +1,9 @@
 import 'package:data_entery/core/uitls.dart';
 import 'package:data_entery/main.dart';
+import 'package:data_entery/presntation/pages/login_page.dart';
 import 'package:data_entery/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});

@@ -6,4 +6,6 @@ class Routers {
   static const searchPage = "/searchPage";
   static const topicPage = "/topicPage";
   static const topicsPage = "/topicsPage";
+  static const String loginScreen = '/login';
+  static const String registerScreen = '/register';
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/data/state/app_state.dart';
 import 'package:data_entery/providers/app_data_repo.dart';
@@ -11,17 +13,17 @@ class AppDataNotifier extends StateNotifier<AppState> {
   ) : super(AppState.empty());
   List<Article> articles = [];
   List<Category> categories = [];
+  List<Section> sections = [];
   getArticles() async {
     if (articles.isEmpty) {
       final appDataRepo = await _ref.watch(appDataRepoProvider.future);
       state = state.copyWith(isLoading: true);
       articles = await appDataRepo.getArticles();
       categories = appDataRepo.getCategories();
+      sections = appDataRepo.getSections();
       state = state.copyWith(
           articles: articles, isLoading: false, categories: categories);
-    } else {
-      return;
-    }
+    } else {}
   }
 
   getSections() async {
@@ -32,12 +34,14 @@ class AppDataNotifier extends StateNotifier<AppState> {
   }
 
   updateSearch(String value) {
-    state.searched = state.sections
-        .where((element) =>
-            element.title.toLowerCase().contains(value.toLowerCase()))
-        .toList();
+    log(value);
+    state = state.copyWith(
+        searched: sections
+            .where((element) =>
+                element.title.toLowerCase().contains(value.toLowerCase()))
+            .toList());
     if (value.isEmpty) {
-      state.searched = state.sections;
+      state = state.copyWith(searched: sections);
     }
   }
 }

@@ -34,7 +34,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   void _performSearch(String query) {
     final appData = ref.watch(appDataProvider.notifier);
     appData.updateSearch(query);
-    setState(() {});
   }
 
   @override

@@ -2,6 +2,7 @@ import 'dart:math' show Random;
 
 import 'package:data_entery/core/constants/app_images.dart';
 import 'package:data_entery/core/uitls.dart';
+import 'package:data_entery/presntation/pages/login_page.dart';
 import 'package:data_entery/presntation/pages/pages.dart';
 import 'package:data_entery/presntation/pages/sign_in.dart';
 import 'package:data_entery/providers/app_data_provider.dart';
@@ -203,6 +204,7 @@ class _HomePageState extends State<HomePage> {
                               chaptersImg.length < index + 1
                                   ? noImage
                                   : chaptersImg[index],
+                              filterQuality: FilterQuality.medium,
                             ),
                           ),
                         ),

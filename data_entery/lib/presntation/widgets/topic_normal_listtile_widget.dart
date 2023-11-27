@@ -40,19 +40,22 @@ class TopicsNormalListTileWidget extends StatelessWidget {
       onTap: () {
         navigate(TopicPage(content: section), context);
       },
-      trailing: IconButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Under Development'),
-            ),
-          );
-        },
-        icon: const Icon(
-          Icons.bookmark_outline,
-          size: 20,
-        ),
+      trailing: const SizedBox(
+        width: 30,
       ),
+      // trailing: IconButton(
+      //   onPressed: () {
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //       const SnackBar(
+      //         content: Text('Under Development'),
+      //       ),
+      //     );
+      //   },
+      //   icon: const Icon(
+      //     Icons.bookmark_outline,
+      //     size: 20,
+      //   ),
+      // ),
     );
   }
 }
