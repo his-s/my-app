@@ -1,7 +1,6 @@
 import 'package:data_entery/core/constants/app_images.dart';
 import 'package:data_entery/core/uitls.dart';
 import 'package:data_entery/data/models/articles_model.dart';
-import 'package:data_entery/presntation/pages/home_page.dart';
 import 'package:data_entery/presntation/pages/topic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

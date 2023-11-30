@@ -1,5 +1,7 @@
 import 'package:data_entery/core/routes/app_router.dart';
 import 'package:data_entery/data/notifiers/data_state_notifier.dart';
+import 'package:data_entery/presntation/pages/create_data.dart';
+import 'package:data_entery/presntation/pages/settings_page.dart';
 import 'package:data_entery/providers/app_data_provider.dart';
 import 'package:data_entery/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +40,9 @@ class _MyAppState extends ConsumerState<MyApp> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final appData = ref.read(appDataProvider.notifier);
       final appUser = ref.read(userStateProvider.notifier);
-      appData.getArticles();
-      appData.getSections();
       appUser.getUser();
+      appData.getCategories();
+      appData.getSections();
     });
   }
 
@@ -57,7 +59,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           ),
         ),
       ),
-      onGenerateRoute: appRouter.onGenreateRoute,
+      home: const SettingsPage(),
     );
   }
 }

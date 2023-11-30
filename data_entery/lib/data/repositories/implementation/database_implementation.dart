@@ -7,6 +7,7 @@ import 'package:data_entery/data/database/database.dart'
         SectionsCompanion,
         SubsectionsCompanion,
         UsersCompanion;
+
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/data/models/code_model.dart';
 import 'package:data_entery/data/models/user_model.dart';
@@ -24,12 +25,12 @@ class LocalDatabase implements DatabaseInterface {
           ArticlesCompanion.insert(
             id: article.id,
             title: article.title,
-            order: Value(article.orderId),
             createdAt: Value(article.createdAt),
             premium: Value(article.premium),
             authorName: Value(article.authorName),
             completed: const Value(true),
           ),
+          mode: InsertMode.replace,
         );
   }
 
@@ -44,6 +45,7 @@ class LocalDatabase implements DatabaseInterface {
             articleId: category.articleId,
             premium: const Value(true),
           ),
+          mode: InsertMode.replace,
         );
   }
 
@@ -59,24 +61,29 @@ class LocalDatabase implements DatabaseInterface {
             subscrioptionInMonths: code.subscriptionMonths ?? 0,
             price: code.price ?? 0,
           ),
+          mode: InsertMode.replace,
         );
   }
 
   @override
   Future<void> insertSection(Section section) async {
-    await _database.into(_database.sections).insert(SectionsCompanion.insert(
-          id: section.id,
-          categorgId: section.categoryId,
-          title: section.title,
-          orderId: section.orderId,
-          createdAt: section.createdAt,
-          articleId: section.articleId,
-          premium: Value(section.premium),
-        ));
+    await _database.into(_database.sections).insert(
+          SectionsCompanion.insert(
+            id: section.id,
+            categoryId: section.categoryId,
+            title: section.title,
+            orderId: section.orderId,
+            createdAt: section.createdAt,
+            articleId: section.articleId,
+            premium: Value(section.premium),
+          ),
+          mode: InsertMode.replace,
+        );
   }
 
   @override
-  Future<void> insertSubscetion(Subsection subsection) async {
+  Future<void> insertSubsection(Subsection subsection) async {
+    // log(subsection.data);
     await _database.into(_database.subsections).insert(
           SubsectionsCompanion.insert(
             id: subsection.id,
@@ -88,6 +95,7 @@ class LocalDatabase implements DatabaseInterface {
             createdAt: subsection.createdAt,
             articleId: subsection.articleId,
           ),
+          mode: InsertMode.replace,
         );
   }
 
@@ -104,6 +112,118 @@ class LocalDatabase implements DatabaseInterface {
             activationCode: user.activationCode ?? '',
             time: user.time ?? 0,
           ),
+          mode: InsertMode.replace,
         );
+  }
+
+  @override
+  Future<List<Article>> getArticles() async {
+    final data = await _database.select(_database.articles).get();
+    return data
+        .map(
+          (e) => Article(
+            id: e.id,
+            title: e.title,
+            premium: e.premium,
+            authorName: e.authorName ?? "",
+            categories: [],
+            orderId: 0,
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<List<Category>> getCategories() async {
+    final data = await _database.select(_database.categories).get();
+    return data
+        .map(
+          (e) => Category(
+            id: e.id,
+            title: e.title,
+            createdAt: e.createdAt,
+            articleId: e.articleId,
+            orderId: e.orderId ?? 0,
+            sections: [],
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<List<Code>> getCodes() async {
+    final data = await _database.select(_database.codes).get();
+    return data
+        .map(
+          (e) => Code(
+            id: int.tryParse(e.id),
+            code: e.code,
+            userId: e.userId,
+            providerName: e.providerName,
+            subscriptionMonths: e.subscrioptionInMonths,
+            price: e.price,
+            createdAt: e.createdAt,
+            isAvailable: e.isAavailable,
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<List<Section>> getSections() async {
+    final data = await _database.select(_database.sections).get();
+    return data
+        .map(
+          (e) => Section(
+            id: e.id,
+            title: e.title,
+            createdAt: e.createdAt,
+            articleId: e.articleId,
+            orderId: e.orderId,
+            categoryId: e.categoryId,
+            premium: e.premium,
+            subsections: [],
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<List<Subsection>> getSubsections() async {
+    final data = await _database.select(_database.subsections).get();
+    return data
+        .map(
+          (e) => Subsection(
+            id: e.id,
+            title: e.title,
+            createdAt: e.createdAt,
+            articleId: e.articleId,
+            orderId: e.orderId,
+            data: e.data,
+            categoryId: e.categoryId,
+            sectionId: e.sectionId,
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<List<AppUser>> getUsers() async {
+    final data = await _database.select(_database.users).get();
+    return data
+        .map(
+          (e) => AppUser(
+            id: e.id,
+            createdAt: e.createdAt,
+            email: e.email,
+            premium: e.premium,
+            name: e.name,
+            tel: e.tel,
+            activationCode: e.activationCode,
+            subscribedAt: e.subscribedAt,
+            time: e.time,
+          ),
+        )
+        .toList();
   }
 }

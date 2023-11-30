@@ -2,7 +2,7 @@ import 'package:data_entery/data/models/articles_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'markdown_image.dart';
+import '../markdown_image.dart';
 
 class MarkdownB extends StatelessWidget {
   const MarkdownB({

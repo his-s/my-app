@@ -1,6 +1,8 @@
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/presntation/widgets/widgets.dart';
+import 'package:data_entery/providers/app_data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TopicPage extends StatefulWidget {
   const TopicPage({super.key, required this.content, this.index = 0});
@@ -89,29 +91,33 @@ class _TopicPageState extends State<TopicPage> {
               ),
             ),
           ),
-          SliverList.builder(
-              itemCount: widget.content.subsections.length,
-              itemBuilder: (context, index) {
-                final subsections = sortSubsections(widget.content.subsections);
-                final subsection = subsections[index];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TopicBarSectionHeader(medicalSection: subsection),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: MarkdownB(
-                        medicalSection: subsection,
-                        blockScroll: (value) {
-                          setState(() {
-                            _blockScroll = value;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                );
-              }),
+          Consumer(
+            builder: (_, WidgetRef ref, __) {
+              final subsections = sortSubsections(widget.content.subsections);
+              return SliverList.builder(
+                  itemCount: subsections.length,
+                  itemBuilder: (context, index) {
+                    final subsection = subsections[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TopicBarSectionHeader(medicalSection: subsection),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: MarkdownB(
+                            medicalSection: subsection,
+                            blockScroll: (value) {
+                              setState(() {
+                                _blockScroll = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  });
+            },
+          ),
         ],
       ),
     );

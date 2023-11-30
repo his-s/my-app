@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:data_entery/core/constants/app_images.dart';
 import 'package:data_entery/core/uitls.dart';
 import 'package:data_entery/data/models/code_model.dart';
-import 'package:data_entery/data/notifiers/subscriptation_notifier.dart';
 import 'package:data_entery/main.dart';
 import 'package:data_entery/providers/subcription_provider.dart';
 import 'package:data_entery/providers/user_provider.dart';

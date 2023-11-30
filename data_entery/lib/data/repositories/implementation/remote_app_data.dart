@@ -1,35 +1,34 @@
 import 'dart:developer';
-
 import 'package:data_entery/data/database/database.dart' as d;
 import 'package:data_entery/data/models/articles_model.dart';
 import 'package:data_entery/data/repositories/interfaces/app_data_inferface.dart';
-import 'package:drift/drift.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class RemoteAppData implements AppDataInterface {
+class RemoteAppDataSource implements AppDataInterface {
   final Supabase _supabase;
-
-  RemoteAppData(this._supabase, this.appDatabase);
+  final d.AppDatabase appDatabase;
   List<Article> _articles = [];
   List<Category> _categories = [];
   List<Section> _sections = [];
+  List<Subsection> _subsections = [];
+
+  RemoteAppDataSource(
+    this._supabase,
+    this.appDatabase,
+  );
+
   List<Section> get sections => _sections;
   List<Category> get categories => _categories;
   List<Article> get articles => _articles;
-  final d.AppDatabase appDatabase;
+
   @override
   Future<List<Article>> getArticles() async {
-    log('U are now asking from remote Data');
     try {
       if (_articles.isEmpty) {
         List<Map<String, dynamic>> data = await _supabase.client
             .from('articles')
             .select('*,categories(*,sections(*,subsections(*)))');
         _articles = data.map((e) => Article.fromMap(e)).toList();
-
-        return _articles;
-      } else {
-        return _articles;
       }
     } catch (e) {
       log(e.toString());
@@ -40,26 +39,11 @@ class RemoteAppData implements AppDataInterface {
   @override
   Future<List<Category>> getCategories() async {
     try {
-      if (_articles.isEmpty) {
-        List<Map<String, dynamic>> data =
-            await _supabase.client.from('categories').select('*');
+      if (_categories.isEmpty) {
+        List<Map<String, dynamic>> data = await _supabase.client
+            .from('categories')
+            .select('*,sections(*,subsections(*))');
         _categories = data.map((e) => Category.fromMap(e)).toList();
-        _categories.forEach((element) async {
-          await appDatabase.into(appDatabase.categories).insert(
-                d.CategoriesCompanion.insert(
-                  id: _articles.first.id,
-                  title: _articles.first.title,
-                  orderId: Value(articles.first.orderId),
-                  premium: Value(articles.first.premium),
-                  createdAt: Value(articles.first.createdAt),
-                  articleId: articles.first.id,
-                ),
-              );
-        });
-
-        return _categories;
-      } else {
-        return _categories;
       }
     } catch (e) {
       log(e.toString());
@@ -68,8 +52,30 @@ class RemoteAppData implements AppDataInterface {
   }
 
   @override
-  Future<List<Section>> getSections() {
-    // TODO: implement getSections
-    throw UnimplementedError();
+  Future<List<Section>> getSections() async {
+    try {
+      if (_sections.isEmpty) {
+        List<Map<String, dynamic>> data =
+            await _supabase.client.from('sections').select('*,subsections(*)');
+        _sections = data.map((e) => Section.fromMap(e)).toList();
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return _sections;
+  }
+
+  @override
+  Future<List<Subsection>> getSubsections() async {
+    try {
+      if (_subsections.isEmpty) {
+        List<Map<String, dynamic>> data =
+            await _supabase.client.from('subsections').select('*');
+        _subsections = data.map((e) => Subsection.fromMap(e)).toList();
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return _subsections;
   }
 }

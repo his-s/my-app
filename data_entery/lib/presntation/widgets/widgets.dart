@@ -1,7 +1,7 @@
 export './go_home_button.dart';
-export './go_premium.dart';
+export 'shared_components/go_premium.dart';
 export './markdown_image.dart';
-export './markdownb.dart';
+export 'shared_components/markdownb.dart';
 export './search_normal_listtile_widget.dart';
 export './search_premium_listtile_widget.dart';
 export './tabed_widget.dart';

@@ -6,6 +6,7 @@ class AppState {
   List<Category> categories;
   List<Section> sections;
   List<Section> searched;
+  List<Subsection> subsections;
   bool isLoading;
   AppState({
     required this.articles,
@@ -13,13 +14,15 @@ class AppState {
     required this.sections,
     required this.isLoading,
     required this.searched,
+    required this.subsections,
   });
   AppState.empty()
       : articles = [],
         categories = [],
         sections = [],
         isLoading = false,
-        searched = [];
+        searched = [],
+        subsections = [];
 
   AppState copyWith({
     List<Article>? articles,
@@ -27,6 +30,7 @@ class AppState {
     List<Section>? sections,
     bool? isLoading,
     List<Section>? searched,
+    List<Subsection>? subsections,
   }) {
     return AppState(
       articles: articles ?? this.articles,
@@ -34,6 +38,7 @@ class AppState {
       sections: sections ?? this.sections,
       isLoading: isLoading ?? this.isLoading,
       searched: searched ?? this.searched,
+      subsections: subsections ?? this.subsections,
     );
   }
 }

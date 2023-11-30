@@ -34,7 +34,6 @@ class TopicsView extends StatelessWidget {
           Consumer(
             builder: (_, WidgetRef ref, __) {
               final appUser = ref.watch(userStateProvider);
-
               return SliverGrid.builder(
                 itemCount: sections.length,
                 itemBuilder: (context, index) {

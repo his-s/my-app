@@ -4,4 +4,5 @@ abstract class AppDataInterface {
   Future<List<Article>> getArticles();
   Future<List<Category>> getCategories();
   Future<List<Section>> getSections();
+  Future<List<Subsection>> getSubsections();
 }

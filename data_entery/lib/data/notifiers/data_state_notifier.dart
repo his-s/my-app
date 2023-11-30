@@ -1,8 +1,9 @@
 import 'dart:developer';
-
 import 'package:data_entery/data/models/articles_model.dart';
+import 'package:data_entery/data/models/values.dart';
 import 'package:data_entery/data/state/app_state.dart';
 import 'package:data_entery/providers/app_data_repo.dart';
+import 'package:data_entery/providers/supabase_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppDataNotifier extends StateNotifier<AppState> {
@@ -15,22 +16,36 @@ class AppDataNotifier extends StateNotifier<AppState> {
   List<Category> categories = [];
   List<Section> sections = [];
   getArticles() async {
-    if (articles.isEmpty) {
-      final appDataRepo = await _ref.watch(appDataRepoProvider.future);
-      state = state.copyWith(isLoading: true);
-      articles = await appDataRepo.getArticles();
-      categories = appDataRepo.getCategories();
-      sections = appDataRepo.getSections();
-      state = state.copyWith(
-          articles: articles, isLoading: false, categories: categories);
-    } else {}
+    final appDataRepo = await _ref.watch(appDataRepoProvider.future);
+    state = state.copyWith(isLoading: true);
+    articles = await appDataRepo.getArticles();
+    state = state.copyWith(
+        articles: articles, isLoading: false, categories: categories);
+  }
+
+  getCategories() async {
+    state = state.copyWith(isLoading: true);
+    final appDataRepo = await _ref.watch(appDataRepoProvider.future);
+    categories = await appDataRepo.getCategories();
+    state = state.copyWith(categories: categories, isLoading: false);
   }
 
   getSections() async {
     state = state.copyWith(isLoading: true);
     final appDataRepo = await _ref.watch(appDataRepoProvider.future);
-    state =
-        state.copyWith(sections: appDataRepo.getSections(), isLoading: false);
+    sections = await appDataRepo.getSections();
+    state = state.copyWith(sections: sections, isLoading: false);
+  }
+
+  getSubsections() async {
+    state = state.copyWith(isLoading: true);
+    final appDataRepo = await _ref.watch(appDataRepoProvider.future);
+    final subsections = await appDataRepo.getSubsections();
+    state = state.copyWith(
+      sections: sections,
+      isLoading: false,
+      subsections: subsections,
+    );
   }
 
   updateSearch(String value) {
@@ -43,6 +58,30 @@ class AppDataNotifier extends StateNotifier<AppState> {
     if (value.isEmpty) {
       state = state.copyWith(searched: sections);
     }
+  }
+
+  uplode(Section topic) async {
+    await supabase.client.from('sections').upsert({
+      ModelValues.title: topic.title,
+      ModelValues.id: topic.id,
+      ModelValues.createdAt: topic.createdAt.toIso8601String(),
+      ModelValues.orderId: topic.orderId,
+      ModelValues.categoryId: topic.categoryId,
+      ModelValues.premium: topic.premium,
+      ModelValues.articleId: topic.articleId,
+    });
+    topic.subsections.forEach((element) async {
+      await supabase.client.from('subsections').upsert({
+        ModelValues.title: element.title,
+        ModelValues.data: element.data,
+        ModelValues.id: element.id,
+        ModelValues.createdAt: element.createdAt.toIso8601String(),
+        ModelValues.orderId: element.orderId,
+        ModelValues.categoryId: element.categoryId,
+        ModelValues.articleId: element.articleId,
+        ModelValues.sectionId: element.sectionId,
+      });
+    });
   }
 }
 
@@ -97,29 +136,29 @@ class AppDataNotifier extends StateNotifier<AppState> {
 //     return data.map((e) => Category.fromMap(e)).toList();
 //   }
 
-//   uplode(Section topic) async {
-//     await supabase.from('sections').upsert({
-//       ModelValues.title: topic.title,
-//       ModelValues.id: topic.id,
-//       ModelValues.createdAt: topic.createdAt.toIso8601String(),
-//       ModelValues.orderId: topic.orderId,
-//       ModelValues.categoryId: topic.categoryId,
-//       ModelValues.premium: topic.premium,
-//       ModelValues.articleId: topic.articleId,
-//     });
-//     topic.subsections.forEach((element) async {
-//       await supabase.from('subsections').upsert({
-//         ModelValues.title: element.title,
-//         ModelValues.data: element.data,
-//         ModelValues.id: element.id,
-//         ModelValues.createdAt: element.createdAt.toIso8601String(),
-//         ModelValues.orderId: element.orderId,
-//         ModelValues.categoryId: element.categoryId,
-//         ModelValues.articleId: element.articleId,
-//         ModelValues.sectionId: element.sectionId,
-//       });
-//     });
-//   }
+  // uplode(Section topic) async {
+  //   await supabase.from('sections').upsert({
+  //     ModelValues.title: topic.title,
+  //     ModelValues.id: topic.id,
+  //     ModelValues.createdAt: topic.createdAt.toIso8601String(),
+  //     ModelValues.orderId: topic.orderId,
+  //     ModelValues.categoryId: topic.categoryId,
+  //     ModelValues.premium: topic.premium,
+  //     ModelValues.articleId: topic.articleId,
+  //   });
+  //   topic.subsections.forEach((element) async {
+  //     await supabase.from('subsections').upsert({
+  //       ModelValues.title: element.title,
+  //       ModelValues.data: element.data,
+  //       ModelValues.id: element.id,
+  //       ModelValues.createdAt: element.createdAt.toIso8601String(),
+  //       ModelValues.orderId: element.orderId,
+  //       ModelValues.categoryId: element.categoryId,
+  //       ModelValues.articleId: element.articleId,
+  //       ModelValues.sectionId: element.sectionId,
+  //     });
+  //   });
+  // }
 
 //   Future<List<Section>> getAllSection(String categoryId) async {
 //     return await supabase

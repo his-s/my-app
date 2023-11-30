@@ -20,11 +20,6 @@ class $ArticlesTable extends Articles with TableInfo<$ArticlesTable, Article> {
   late final GeneratedColumn<String> title = GeneratedColumn<String>(
       'title', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _orderMeta = const VerificationMeta('order');
-  @override
-  late final GeneratedColumn<int> order = GeneratedColumn<int>(
-      'order', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _createdAtMeta =
       const VerificationMeta('createdAt');
   @override
@@ -59,7 +54,7 @@ class $ArticlesTable extends Articles with TableInfo<$ArticlesTable, Article> {
       type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, title, order, createdAt, premium, completed, authorName];
+      [id, title, createdAt, premium, completed, authorName];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -80,10 +75,6 @@ class $ArticlesTable extends Articles with TableInfo<$ArticlesTable, Article> {
           _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
     } else if (isInserting) {
       context.missing(_titleMeta);
-    }
-    if (data.containsKey('order')) {
-      context.handle(
-          _orderMeta, order.isAcceptableOrUnknown(data['order']!, _orderMeta));
     }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
@@ -116,8 +107,6 @@ class $ArticlesTable extends Articles with TableInfo<$ArticlesTable, Article> {
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       title: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
-      order: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}order']),
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at']),
       premium: attachedDatabase.typeMapping
@@ -138,7 +127,6 @@ class $ArticlesTable extends Articles with TableInfo<$ArticlesTable, Article> {
 class Article extends DataClass implements Insertable<Article> {
   final String id;
   final String title;
-  final int? order;
   final DateTime? createdAt;
   final bool premium;
   final bool completed;
@@ -146,7 +134,6 @@ class Article extends DataClass implements Insertable<Article> {
   const Article(
       {required this.id,
       required this.title,
-      this.order,
       this.createdAt,
       required this.premium,
       required this.completed,
@@ -156,9 +143,6 @@ class Article extends DataClass implements Insertable<Article> {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['title'] = Variable<String>(title);
-    if (!nullToAbsent || order != null) {
-      map['order'] = Variable<int>(order);
-    }
     if (!nullToAbsent || createdAt != null) {
       map['created_at'] = Variable<DateTime>(createdAt);
     }
@@ -174,8 +158,6 @@ class Article extends DataClass implements Insertable<Article> {
     return ArticlesCompanion(
       id: Value(id),
       title: Value(title),
-      order:
-          order == null && nullToAbsent ? const Value.absent() : Value(order),
       createdAt: createdAt == null && nullToAbsent
           ? const Value.absent()
           : Value(createdAt),
@@ -193,7 +175,6 @@ class Article extends DataClass implements Insertable<Article> {
     return Article(
       id: serializer.fromJson<String>(json['id']),
       title: serializer.fromJson<String>(json['title']),
-      order: serializer.fromJson<int?>(json['order']),
       createdAt: serializer.fromJson<DateTime?>(json['createdAt']),
       premium: serializer.fromJson<bool>(json['premium']),
       completed: serializer.fromJson<bool>(json['completed']),
@@ -206,7 +187,6 @@ class Article extends DataClass implements Insertable<Article> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'title': serializer.toJson<String>(title),
-      'order': serializer.toJson<int?>(order),
       'createdAt': serializer.toJson<DateTime?>(createdAt),
       'premium': serializer.toJson<bool>(premium),
       'completed': serializer.toJson<bool>(completed),
@@ -217,7 +197,6 @@ class Article extends DataClass implements Insertable<Article> {
   Article copyWith(
           {String? id,
           String? title,
-          Value<int?> order = const Value.absent(),
           Value<DateTime?> createdAt = const Value.absent(),
           bool? premium,
           bool? completed,
@@ -225,7 +204,6 @@ class Article extends DataClass implements Insertable<Article> {
       Article(
         id: id ?? this.id,
         title: title ?? this.title,
-        order: order.present ? order.value : this.order,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         premium: premium ?? this.premium,
         completed: completed ?? this.completed,
@@ -236,7 +214,6 @@ class Article extends DataClass implements Insertable<Article> {
     return (StringBuffer('Article(')
           ..write('id: $id, ')
           ..write('title: $title, ')
-          ..write('order: $order, ')
           ..write('createdAt: $createdAt, ')
           ..write('premium: $premium, ')
           ..write('completed: $completed, ')
@@ -247,14 +224,13 @@ class Article extends DataClass implements Insertable<Article> {
 
   @override
   int get hashCode =>
-      Object.hash(id, title, order, createdAt, premium, completed, authorName);
+      Object.hash(id, title, createdAt, premium, completed, authorName);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Article &&
           other.id == this.id &&
           other.title == this.title &&
-          other.order == this.order &&
           other.createdAt == this.createdAt &&
           other.premium == this.premium &&
           other.completed == this.completed &&
@@ -264,7 +240,6 @@ class Article extends DataClass implements Insertable<Article> {
 class ArticlesCompanion extends UpdateCompanion<Article> {
   final Value<String> id;
   final Value<String> title;
-  final Value<int?> order;
   final Value<DateTime?> createdAt;
   final Value<bool> premium;
   final Value<bool> completed;
@@ -273,7 +248,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
   const ArticlesCompanion({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
-    this.order = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.premium = const Value.absent(),
     this.completed = const Value.absent(),
@@ -283,7 +257,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
   ArticlesCompanion.insert({
     required String id,
     required String title,
-    this.order = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.premium = const Value.absent(),
     this.completed = const Value.absent(),
@@ -294,7 +267,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
   static Insertable<Article> custom({
     Expression<String>? id,
     Expression<String>? title,
-    Expression<int>? order,
     Expression<DateTime>? createdAt,
     Expression<bool>? premium,
     Expression<bool>? completed,
@@ -304,7 +276,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (title != null) 'title': title,
-      if (order != null) 'order': order,
       if (createdAt != null) 'created_at': createdAt,
       if (premium != null) 'premium': premium,
       if (completed != null) 'completed': completed,
@@ -316,7 +287,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
   ArticlesCompanion copyWith(
       {Value<String>? id,
       Value<String>? title,
-      Value<int?>? order,
       Value<DateTime?>? createdAt,
       Value<bool>? premium,
       Value<bool>? completed,
@@ -325,7 +295,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
     return ArticlesCompanion(
       id: id ?? this.id,
       title: title ?? this.title,
-      order: order ?? this.order,
       createdAt: createdAt ?? this.createdAt,
       premium: premium ?? this.premium,
       completed: completed ?? this.completed,
@@ -342,9 +311,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
     }
     if (title.present) {
       map['title'] = Variable<String>(title.value);
-    }
-    if (order.present) {
-      map['order'] = Variable<int>(order.value);
     }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
@@ -369,7 +335,6 @@ class ArticlesCompanion extends UpdateCompanion<Article> {
     return (StringBuffer('ArticlesCompanion(')
           ..write('id: $id, ')
           ..write('title: $title, ')
-          ..write('order: $order, ')
           ..write('createdAt: $createdAt, ')
           ..write('premium: $premium, ')
           ..write('completed: $completed, ')
@@ -752,7 +717,7 @@ class $CodesTable extends Codes with TableInfo<$CodesTable, Code> {
       const VerificationMeta('subscrioptionInMonths');
   @override
   late final GeneratedColumn<int> subscrioptionInMonths = GeneratedColumn<int>(
-      'subscrioption_in_months', aliasedName, false,
+      'subscription_months', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
   static const VerificationMeta _priceMeta = const VerificationMeta('price');
   @override
@@ -769,11 +734,11 @@ class $CodesTable extends Codes with TableInfo<$CodesTable, Code> {
       const VerificationMeta('isAavailable');
   @override
   late final GeneratedColumn<bool> isAavailable = GeneratedColumn<bool>(
-      'is_aavailable', aliasedName, false,
+      'is_available', aliasedName, false,
       type: DriftSqlType.bool,
       requiredDuringInsert: false,
       defaultConstraints: GeneratedColumn.constraintIsAlways(
-          'CHECK ("is_aavailable" IN (0, 1))'),
+          'CHECK ("is_available" IN (0, 1))'),
       defaultValue: const Constant(false));
   @override
   List<GeneratedColumn> get $columns => [
@@ -821,11 +786,11 @@ class $CodesTable extends Codes with TableInfo<$CodesTable, Code> {
     } else if (isInserting) {
       context.missing(_providerNameMeta);
     }
-    if (data.containsKey('subscrioption_in_months')) {
+    if (data.containsKey('subscription_months')) {
       context.handle(
           _subscrioptionInMonthsMeta,
           subscrioptionInMonths.isAcceptableOrUnknown(
-              data['subscrioption_in_months']!, _subscrioptionInMonthsMeta));
+              data['subscription_months']!, _subscrioptionInMonthsMeta));
     } else if (isInserting) {
       context.missing(_subscrioptionInMonthsMeta);
     }
@@ -841,11 +806,11 @@ class $CodesTable extends Codes with TableInfo<$CodesTable, Code> {
     } else if (isInserting) {
       context.missing(_createdAtMeta);
     }
-    if (data.containsKey('is_aavailable')) {
+    if (data.containsKey('is_available')) {
       context.handle(
           _isAavailableMeta,
           isAavailable.isAcceptableOrUnknown(
-              data['is_aavailable']!, _isAavailableMeta));
+              data['is_available']!, _isAavailableMeta));
     }
     return context;
   }
@@ -865,13 +830,13 @@ class $CodesTable extends Codes with TableInfo<$CodesTable, Code> {
       providerName: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}provider_name'])!,
       subscrioptionInMonths: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}subscrioption_in_months'])!,
+          DriftSqlType.int, data['${effectivePrefix}subscription_months'])!,
       price: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}price'])!,
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
       isAavailable: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}is_aavailable'])!,
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_available'])!,
     );
   }
 
@@ -906,10 +871,10 @@ class Code extends DataClass implements Insertable<Code> {
     map['code'] = Variable<String>(code);
     map['user_id'] = Variable<String>(userId);
     map['provider_name'] = Variable<String>(providerName);
-    map['subscrioption_in_months'] = Variable<int>(subscrioptionInMonths);
+    map['subscription_months'] = Variable<int>(subscrioptionInMonths);
     map['price'] = Variable<double>(price);
     map['created_at'] = Variable<DateTime>(createdAt);
-    map['is_aavailable'] = Variable<bool>(isAavailable);
+    map['is_available'] = Variable<bool>(isAavailable);
     return map;
   }
 
@@ -1063,10 +1028,10 @@ class CodesCompanion extends UpdateCompanion<Code> {
       if (userId != null) 'user_id': userId,
       if (providerName != null) 'provider_name': providerName,
       if (subscrioptionInMonths != null)
-        'subscrioption_in_months': subscrioptionInMonths,
+        'subscription_months': subscrioptionInMonths,
       if (price != null) 'price': price,
       if (createdAt != null) 'created_at': createdAt,
-      if (isAavailable != null) 'is_aavailable': isAavailable,
+      if (isAavailable != null) 'is_available': isAavailable,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -1111,8 +1076,7 @@ class CodesCompanion extends UpdateCompanion<Code> {
       map['provider_name'] = Variable<String>(providerName.value);
     }
     if (subscrioptionInMonths.present) {
-      map['subscrioption_in_months'] =
-          Variable<int>(subscrioptionInMonths.value);
+      map['subscription_months'] = Variable<int>(subscrioptionInMonths.value);
     }
     if (price.present) {
       map['price'] = Variable<double>(price.value);
@@ -1121,7 +1085,7 @@ class CodesCompanion extends UpdateCompanion<Code> {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
     if (isAavailable.present) {
-      map['is_aavailable'] = Variable<bool>(isAavailable.value);
+      map['is_available'] = Variable<bool>(isAavailable.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -1158,11 +1122,11 @@ class $SectionsTable extends Sections with TableInfo<$SectionsTable, Section> {
       type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
-  static const VerificationMeta _categorgIdMeta =
-      const VerificationMeta('categorgId');
+  static const VerificationMeta _categoryIdMeta =
+      const VerificationMeta('categoryId');
   @override
-  late final GeneratedColumn<String> categorgId = GeneratedColumn<String>(
-      'categorg_id', aliasedName, false,
+  late final GeneratedColumn<String> categoryId = GeneratedColumn<String>(
+      'category_id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _titleMeta = const VerificationMeta('title');
   @override
@@ -1199,7 +1163,7 @@ class $SectionsTable extends Sections with TableInfo<$SectionsTable, Section> {
       defaultValue: const Constant(false));
   @override
   List<GeneratedColumn> get $columns =>
-      [id, categorgId, title, orderId, createdAt, articleId, premium];
+      [id, categoryId, title, orderId, createdAt, articleId, premium];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1215,13 +1179,13 @@ class $SectionsTable extends Sections with TableInfo<$SectionsTable, Section> {
     } else if (isInserting) {
       context.missing(_idMeta);
     }
-    if (data.containsKey('categorg_id')) {
+    if (data.containsKey('category_id')) {
       context.handle(
-          _categorgIdMeta,
-          categorgId.isAcceptableOrUnknown(
-              data['categorg_id']!, _categorgIdMeta));
+          _categoryIdMeta,
+          categoryId.isAcceptableOrUnknown(
+              data['category_id']!, _categoryIdMeta));
     } else if (isInserting) {
-      context.missing(_categorgIdMeta);
+      context.missing(_categoryIdMeta);
     }
     if (data.containsKey('title')) {
       context.handle(
@@ -1262,8 +1226,8 @@ class $SectionsTable extends Sections with TableInfo<$SectionsTable, Section> {
     return Section(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      categorgId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}categorg_id'])!,
+      categoryId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category_id'])!,
       title: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
       orderId: attachedDatabase.typeMapping
@@ -1285,7 +1249,7 @@ class $SectionsTable extends Sections with TableInfo<$SectionsTable, Section> {
 
 class Section extends DataClass implements Insertable<Section> {
   final String id;
-  final String categorgId;
+  final String categoryId;
   final String title;
   final int orderId;
   final DateTime createdAt;
@@ -1293,7 +1257,7 @@ class Section extends DataClass implements Insertable<Section> {
   final bool premium;
   const Section(
       {required this.id,
-      required this.categorgId,
+      required this.categoryId,
       required this.title,
       required this.orderId,
       required this.createdAt,
@@ -1303,7 +1267,7 @@ class Section extends DataClass implements Insertable<Section> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
-    map['categorg_id'] = Variable<String>(categorgId);
+    map['category_id'] = Variable<String>(categoryId);
     map['title'] = Variable<String>(title);
     map['order_id'] = Variable<int>(orderId);
     map['created_at'] = Variable<DateTime>(createdAt);
@@ -1315,7 +1279,7 @@ class Section extends DataClass implements Insertable<Section> {
   SectionsCompanion toCompanion(bool nullToAbsent) {
     return SectionsCompanion(
       id: Value(id),
-      categorgId: Value(categorgId),
+      categoryId: Value(categoryId),
       title: Value(title),
       orderId: Value(orderId),
       createdAt: Value(createdAt),
@@ -1329,7 +1293,7 @@ class Section extends DataClass implements Insertable<Section> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Section(
       id: serializer.fromJson<String>(json['id']),
-      categorgId: serializer.fromJson<String>(json['categorgId']),
+      categoryId: serializer.fromJson<String>(json['categoryId']),
       title: serializer.fromJson<String>(json['title']),
       orderId: serializer.fromJson<int>(json['orderId']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
@@ -1342,7 +1306,7 @@ class Section extends DataClass implements Insertable<Section> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
-      'categorgId': serializer.toJson<String>(categorgId),
+      'categoryId': serializer.toJson<String>(categoryId),
       'title': serializer.toJson<String>(title),
       'orderId': serializer.toJson<int>(orderId),
       'createdAt': serializer.toJson<DateTime>(createdAt),
@@ -1353,7 +1317,7 @@ class Section extends DataClass implements Insertable<Section> {
 
   Section copyWith(
           {String? id,
-          String? categorgId,
+          String? categoryId,
           String? title,
           int? orderId,
           DateTime? createdAt,
@@ -1361,7 +1325,7 @@ class Section extends DataClass implements Insertable<Section> {
           bool? premium}) =>
       Section(
         id: id ?? this.id,
-        categorgId: categorgId ?? this.categorgId,
+        categoryId: categoryId ?? this.categoryId,
         title: title ?? this.title,
         orderId: orderId ?? this.orderId,
         createdAt: createdAt ?? this.createdAt,
@@ -1372,7 +1336,7 @@ class Section extends DataClass implements Insertable<Section> {
   String toString() {
     return (StringBuffer('Section(')
           ..write('id: $id, ')
-          ..write('categorgId: $categorgId, ')
+          ..write('categoryId: $categoryId, ')
           ..write('title: $title, ')
           ..write('orderId: $orderId, ')
           ..write('createdAt: $createdAt, ')
@@ -1384,13 +1348,13 @@ class Section extends DataClass implements Insertable<Section> {
 
   @override
   int get hashCode => Object.hash(
-      id, categorgId, title, orderId, createdAt, articleId, premium);
+      id, categoryId, title, orderId, createdAt, articleId, premium);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Section &&
           other.id == this.id &&
-          other.categorgId == this.categorgId &&
+          other.categoryId == this.categoryId &&
           other.title == this.title &&
           other.orderId == this.orderId &&
           other.createdAt == this.createdAt &&
@@ -1400,7 +1364,7 @@ class Section extends DataClass implements Insertable<Section> {
 
 class SectionsCompanion extends UpdateCompanion<Section> {
   final Value<String> id;
-  final Value<String> categorgId;
+  final Value<String> categoryId;
   final Value<String> title;
   final Value<int> orderId;
   final Value<DateTime> createdAt;
@@ -1409,7 +1373,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
   final Value<int> rowid;
   const SectionsCompanion({
     this.id = const Value.absent(),
-    this.categorgId = const Value.absent(),
+    this.categoryId = const Value.absent(),
     this.title = const Value.absent(),
     this.orderId = const Value.absent(),
     this.createdAt = const Value.absent(),
@@ -1419,7 +1383,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
   });
   SectionsCompanion.insert({
     required String id,
-    required String categorgId,
+    required String categoryId,
     required String title,
     required int orderId,
     required DateTime createdAt,
@@ -1427,14 +1391,14 @@ class SectionsCompanion extends UpdateCompanion<Section> {
     this.premium = const Value.absent(),
     this.rowid = const Value.absent(),
   })  : id = Value(id),
-        categorgId = Value(categorgId),
+        categoryId = Value(categoryId),
         title = Value(title),
         orderId = Value(orderId),
         createdAt = Value(createdAt),
         articleId = Value(articleId);
   static Insertable<Section> custom({
     Expression<String>? id,
-    Expression<String>? categorgId,
+    Expression<String>? categoryId,
     Expression<String>? title,
     Expression<int>? orderId,
     Expression<DateTime>? createdAt,
@@ -1444,7 +1408,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (categorgId != null) 'categorg_id': categorgId,
+      if (categoryId != null) 'category_id': categoryId,
       if (title != null) 'title': title,
       if (orderId != null) 'order_id': orderId,
       if (createdAt != null) 'created_at': createdAt,
@@ -1456,7 +1420,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
 
   SectionsCompanion copyWith(
       {Value<String>? id,
-      Value<String>? categorgId,
+      Value<String>? categoryId,
       Value<String>? title,
       Value<int>? orderId,
       Value<DateTime>? createdAt,
@@ -1465,7 +1429,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
       Value<int>? rowid}) {
     return SectionsCompanion(
       id: id ?? this.id,
-      categorgId: categorgId ?? this.categorgId,
+      categoryId: categoryId ?? this.categoryId,
       title: title ?? this.title,
       orderId: orderId ?? this.orderId,
       createdAt: createdAt ?? this.createdAt,
@@ -1481,8 +1445,8 @@ class SectionsCompanion extends UpdateCompanion<Section> {
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
-    if (categorgId.present) {
-      map['categorg_id'] = Variable<String>(categorgId.value);
+    if (categoryId.present) {
+      map['category_id'] = Variable<String>(categoryId.value);
     }
     if (title.present) {
       map['title'] = Variable<String>(title.value);
@@ -1509,7 +1473,7 @@ class SectionsCompanion extends UpdateCompanion<Section> {
   String toString() {
     return (StringBuffer('SectionsCompanion(')
           ..write('id: $id, ')
-          ..write('categorgId: $categorgId, ')
+          ..write('categoryId: $categoryId, ')
           ..write('title: $title, ')
           ..write('orderId: $orderId, ')
           ..write('createdAt: $createdAt, ')

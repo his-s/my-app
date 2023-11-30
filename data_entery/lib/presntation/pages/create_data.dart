@@ -1,12 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:data_entery/data/models/articles_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
+
+import 'package:data_entery/data/models/articles_model.dart';
+import 'package:data_entery/providers/app_data_provider.dart';
+import 'package:data_entery/providers/supabase_provider.dart';
 
 class SectionListWidget extends StatefulWidget {
   const SectionListWidget({
@@ -155,8 +160,8 @@ Future<void> saveAsJson(
 }
 
 class CreateDataPage extends ConsumerStatefulWidget {
-  const CreateDataPage(this.sections, {super.key});
-  final List<Section> sections;
+  const CreateDataPage({super.key});
+
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CreateDataPageState();
 }
@@ -174,12 +179,33 @@ class _CreateDataPageState extends ConsumerState<CreateDataPage> {
     subsections: [],
     articleId: '',
   );
+  Category category = Category(
+    id: 'id',
+    createdAt: DateTime.now(),
+    title: '',
+    articleId: '',
+    orderId: 0,
+    sections: [],
+  );
   @override
   Widget build(BuildContext context) {
+    final categories = ref.watch(appDataProvider).categories;
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
+          Wrap(
+            children: categories
+                .map((e) => TextButton(
+                    onPressed: () {
+                      setState(() {
+                        category = e;
+                      });
+                    },
+                    child: Text(e.title)))
+                .toList(),
+          ),
+          Text('selected category is ${category.title}'),
           Row(
             children: [
               Expanded(
@@ -195,9 +221,9 @@ class _CreateDataPageState extends ConsumerState<CreateDataPage> {
                 onPressed: () {
                   setState(() {
                     topic.title = _topicTitle.text.trim();
-                    topic.articleId = widget.sections.first.articleId;
-                    topic.categoryId = widget.sections.first.categoryId;
-                    topic.orderId = widget.sections.length + 1;
+                    topic.articleId = category.articleId;
+                    topic.categoryId = category.id;
+                    topic.orderId = category.sections.length + 1;
                   });
                 },
                 child: const Text('Save Topic Title'),
@@ -219,8 +245,8 @@ class _CreateDataPageState extends ConsumerState<CreateDataPage> {
           ),
           Expanded(
             child: SectionListWidget(
-                articalId: widget.sections.first.articleId,
-                catId: widget.sections.first.categoryId,
+                articalId: category.articleId,
+                catId: category.id,
                 sectionId: topic.id,
                 addSupps: (value) {
                   log(value.toString());
@@ -231,8 +257,17 @@ class _CreateDataPageState extends ConsumerState<CreateDataPage> {
           ),
           TextButton(
             onPressed: () async {
-              saveAsJson(topic);
-              // ref.watch(appDataProvider).uplode(topic);
+              //saveAsJson(topic);
+              List<Map<String, dynamic>> data =
+                  await supabase.client.from('admin').select('*');
+              final values = data.map((e) => Admin.fromMap(e)).toList();
+              values.forEach((e) {
+                if (e.code == 'doit9080') {
+                  ref.watch(appDataProvider.notifier).uplode(topic);
+                }
+              });
+
+              /// ref.watch(appDataProvider.notifier).uplode(topic);
             },
             child: const Text('Save Topic'),
           ),
@@ -240,4 +275,55 @@ class _CreateDataPageState extends ConsumerState<CreateDataPage> {
       ),
     );
   }
+}
+
+class Admin {
+  int id;
+  String code;
+  Admin({
+    required this.id,
+    required this.code,
+  });
+
+  Admin copyWith({
+    int? id,
+    String? code,
+  }) {
+    return Admin(
+      id: id ?? this.id,
+      code: code ?? this.code,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'code': code,
+    };
+  }
+
+  factory Admin.fromMap(Map<String, dynamic> map) {
+    return Admin(
+      id: map['id'] as int,
+      code: map['code'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Admin.fromJson(String source) =>
+      Admin.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'Admin(id: $id, code: $code)';
+
+  @override
+  bool operator ==(covariant Admin other) {
+    if (identical(this, other)) return true;
+
+    return other.id == id && other.code == code;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ code.hashCode;
 }
