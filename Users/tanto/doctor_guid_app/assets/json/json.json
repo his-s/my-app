@@ -1,0 +1,712 @@
+[
+    {
+        "title": "Internal Medicine Emergency",
+        "topics": [
+            {
+                "title": "APCDE approach",
+                "index": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Coronary Syndrome",
+                "index": [
+                    10,
+                    11,
+                    12
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Pulmonary Edema",
+                "index": [
+                    13
+                ],
+                "images": []
+            },
+            {
+                "title": "Pulmonary Embolism",
+                "index": [
+                    14,
+                    15
+                ],
+                "images": []
+            },
+            {
+                "title": "Hypertensive Emergencies",
+                "index": [
+                    16,
+                    17
+                ],
+                "images": []
+            },
+            {
+                "title": "Hypotension",
+                "index": [
+                    18,
+                    19
+                ],
+                "images": []
+            },
+            {
+                "title": "Allergic Reaction and Anaphylaxis",
+                "index": [
+                    20,
+                    21,
+                    22,
+                    23
+                ],
+                "images": []
+            },
+            {
+                "title": "Hypovolemic Shock",
+                "index": [
+                    24,
+                    25
+                ],
+                "images": []
+            },
+            {
+                "title": "Vasovagal Syncope",
+                "index": [
+                    26
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Asthma",
+                "index": [
+                    26,
+                    27,
+                    28
+                ],
+                "images": []
+            },
+            {
+                "title": "Tension Pneumothorax",
+                "index": [
+                    29
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Exacerbation of COPD",
+                "index": [
+                    30,
+                    31,
+                    32
+                ],
+                "images": []
+            },
+            {
+                "title": "Choking in Adult",
+                "index": [
+                    33
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Gastroenteritis",
+                "index": [
+                    34,
+                    35
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Gastritis",
+                "index": [
+                    36,
+                    37
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Convulsions",
+                "index": [
+                    38,
+                    39
+                ],
+                "images": []
+            },
+            {
+                "title": "Stroke",
+                "index": [
+                    40,
+                    41
+                ],
+                "images": []
+            },
+            {
+                "title": "Coma",
+                "index": [
+                    42,
+                    43
+                ],
+                "images": []
+            },
+            {
+                "title": "Fabricated or Psychogenic Coma",
+                "index": [
+                    44
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Renal Failure",
+                "index": [
+                    45
+                ],
+                "images": []
+            },
+            {
+                "title": "DKA",
+                "index": [
+                    46,
+                    47
+                ],
+                "images": []
+            },
+            {
+                "title": "Hyperosmolar Nonketotic Coma",
+                "index": [
+                    48
+                ],
+                "images": []
+            },
+            {
+                "title": "Hypoglycemic Coma",
+                "index": [
+                    49,
+                    50
+                ],
+                "images": []
+            },
+            {
+                "title": "Tetany",
+                "index": [
+                    51
+                ],
+                "images": []
+            },
+            {
+                "title": "Diagnosis Of Death",
+                "index": [
+                    52
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Chest Pain",
+                "index": [
+                    53,
+                    54,
+                    55
+                ],
+                "images": []
+            },
+            {
+                "title": "Cough",
+                "index": [
+                    56,
+                    57,
+                    58
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Dyspnea",
+                "index": [
+                    59,
+                    60,
+                    61,
+                    62
+                ],
+                "images": []
+            },
+            {
+                "title": "Collapse and Syncope",
+                "index": [
+                    63,
+                    64,
+                    65
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Abdomen",
+                "index": [
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71
+                ],
+                "images": []
+            },
+            {
+                "title": "Upper GIT Bleeding",
+                "index": [
+                    72
+                ],
+                "images": []
+            },
+            {
+                "title": "Lower GIT Bleeding",
+                "index": [
+                    73
+                ],
+                "images": []
+            },
+            {
+                "title": "Hemoptysis",
+                "index": [
+                    76,
+                    77
+                ],
+                "images": []
+            },
+            {
+                "title": "Vomiting",
+                "index": [
+                    78,
+                    79,
+                    80,
+                    81,
+                    82
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Diarrhea",
+                "index": [
+                    83,
+                    84
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute and Chronic Constipation",
+                "index": [
+                    85
+                ],
+                "images": []
+            }
+        ]
+    },
+    {
+        "title": "Pediatric emergency",
+        "topics": [
+            {
+                "title": "Primary assessment and resuscitation of child",
+                "index": [
+                    89
+                ],
+                "images": []
+            },
+            {
+                "title": "Pediatric basic life support",
+                "index": [
+                    90,
+                    91
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute asthma",
+                "index": [
+                    92,
+                    93,
+                    94
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute bronchiolitis",
+                "index": [
+                    95,
+                    96,
+                    97
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute viral CROUP",
+                "index": [
+                    98,
+                    99
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute epiglottitis",
+                "index": [
+                    100
+                ],
+                "images": []
+            },
+            {
+                "title": "Stridor",
+                "index": [
+                    101
+                ],
+                "images": []
+            },
+            {
+                "title": "Choking child",
+                "index": [
+                    101,
+                    102,
+                    103
+                ],
+                "images": []
+            },
+            {
+                "title": "Febrile convulsions",
+                "index": [
+                    104
+                ],
+                "images": []
+            },
+            {
+                "title": "Grand mal epilepsy",
+                "index": [
+                    105,
+                    106
+                ],
+                "images": []
+            },
+            {
+                "title": "Febrile child",
+                "index": [
+                    107,
+                    108,
+                    109,
+                    110
+                ],
+                "images": []
+            },
+            {
+                "title": "Constipation in pediatric",
+                "index": [
+                    111,
+                    112
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute abdominal pain",
+                "index": [
+                    113
+                ],
+                "images": []
+            },
+            {
+                "title": "Vomiting",
+                "index": [
+                    113
+                ],
+                "images": []
+            }
+        ]
+    },
+    {
+        "title": "Surgical Emergency",
+        "topics": [
+            {
+                "title": "Suturing and simple wound",
+                "index": [
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                ],
+                "images": []
+            },
+            {
+                "title": "Wound management",
+                "index": [
+                    129,
+                    130,
+                    131,
+                    132,
+                    133
+                ],
+                "images": []
+            },
+            {
+                "title": "Tetanus prophylaxis",
+                "index": [
+                    134,
+                    135,
+                    136,
+                    137
+                ],
+                "images": []
+            },
+            {
+                "title": "Bite wounds",
+                "index": [
+                    138
+                ],
+                "images": []
+            },
+            {
+                "title": "Burn",
+                "index": [
+                    137,
+                    139,
+                    140
+                ],
+                "images": []
+            },
+            {
+                "title": "Inhalation Burn",
+                "index": [
+                    141
+                ],
+                "images": []
+            },
+            {
+                "title": "Head Trauma",
+                "index": [
+                    142,
+                    143
+                ],
+                "images": []
+            },
+            {
+                "title": "Chest Trauma",
+                "index": [
+                    144
+                ],
+                "images": []
+            },
+            {
+                "title": "Abdominal trauma",
+                "index": [
+                    145
+                ],
+                "images": []
+            },
+            {
+                "title": "Back trauma",
+                "index": [
+                    145
+                ],
+                "images": []
+            },
+            {
+                "title": "Limb Trauma",
+                "index": [
+                    146
+                ],
+                "images": []
+            },
+            {
+                "title": "Ankle sprains",
+                "index": [
+                    146
+                ],
+                "images": []
+            },
+            {
+                "title": "Contusions and bruises",
+                "index": [
+                    147
+                ],
+                "images": []
+            },
+            {
+                "title": "Hematoma",
+                "index": [
+                    147,
+                    148
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Biliary",
+                "index": [
+                    149,
+                    150
+                ],
+                "images": []
+            },
+            {
+                "title": "Biliary colic",
+                "index": [
+                    151,
+                    152
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute intestinal obstruction",
+                "index": [
+                    153
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute Pancreatitis",
+                "index": [
+                    154,
+                    155
+                ],
+                "images": []
+            },
+            {
+                "title": "Renal Colic",
+                "index": [
+                    156,
+                    157
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute retention of urine",
+                "index": [
+                    158,
+                    159
+                ],
+                "images": []
+            },
+            {
+                "title": "Acute limb ischemia",
+                "index": [
+                    160
+                ],
+                "images": []
+            },
+            {
+                "title": "DVT",
+                "index": [
+                    161
+                ],
+                "images": []
+            }
+        ]
+    },
+    {
+        "title": "Toxicology",
+        "topics": [
+            {
+                "title": "First aid for intoxicated patient",
+                "index": [
+                    163,
+                    164,
+                    165,
+                    166
+                ],
+                "images": []
+            },
+            {
+                "title": "Organophosphorus",
+                "index": [
+                    167,
+                    168
+                ],
+                "images": []
+            },
+            {
+                "title": "Opioid",
+                "index": [
+                    169,
+                    170
+                ],
+                "images": []
+            },
+            {
+                "title": "Corrosive",
+                "index": [
+                    171
+                ],
+                "images": []
+            },
+            {
+                "title": "Carbon monoxide",
+                "index": [
+                    172
+                ],
+                "images": []
+            },
+            {
+                "title": "Cyanide",
+                "index": [
+                    173,
+                    174
+                ],
+                "images": []
+            },
+            {
+                "title": "Botulism",
+                "index": [
+                    175
+                ],
+                "images": []
+            },
+            {
+                "title": "Petrol and paraffin",
+                "index": [
+                    176,
+                    177
+                ],
+                "images": []
+            },
+            {
+                "title": "Zinc phosphide",
+                "index": [
+                    178
+                ],
+                "images": []
+            },
+            {
+                "title": "Aspirin",
+                "index": [
+                    178,
+                    179
+                ],
+                "images": []
+            },
+            {
+                "title": "Paracetamol",
+                "index": [
+                    180,
+                    181
+                ],
+                "images": []
+            },
+            {
+                "title": "Primperan",
+                "index": [
+                    182,
+                    183,
+                    184
+                ],
+                "images": []
+            },
+            {
+                "title": "Snake bite",
+                "index": [],
+                "images": []
+            }
+        ]
+    }
+]
